@@ -1,0 +1,21 @@
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-color);
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px);
+}
+
+@media (max-width: 992px) {
+  .custom-cursor {
+    display: none; /* Hide custom cursor on mobile/tablet */
+  }
+}
