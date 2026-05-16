@@ -47,6 +47,10 @@
   position: relative;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .nav-link:hover {
   opacity: 1;
   color: var(--accent-color);
@@ -151,20 +155,36 @@
 
 .mega-menu {
   position: absolute;
-  top: 40px;
+  top: 60px;
   left: 50%;
   width: 900px;
-  background-color: #ffffff;
+  background-color: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(208, 246, 1, 0.05);
   padding: 40px;
-  color: #000;
+  color: #fff;
   cursor: default;
+  overflow: hidden;
+}
+
+.mega-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(208, 246, 1, 0.5), transparent);
 }
 
 .mega-menu-content {
   display: flex;
   gap: 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .mega-menu-left {
@@ -174,14 +194,15 @@
 
 .pill-services {
   display: inline-block;
-  background-color: #48D1CC;
-  color: #fff;
-  font-weight: 700;
+  background-color: rgba(208, 246, 1, 0.1);
+  color: var(--accent-color);
+  font-weight: 600;
   font-size: 0.8rem;
   padding: 6px 16px;
   border-radius: 20px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  border: 1px solid rgba(208, 246, 1, 0.2);
 }
 
 .mega-menu-columns {
@@ -198,8 +219,8 @@
 
 .mega-menu-title {
   font-size: 0.9rem;
-  font-weight: 800;
-  color: #000;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
   margin-top: 0;
   margin-bottom: 24px;
   text-transform: uppercase;
@@ -209,7 +230,7 @@
 .mega-menu-items {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 .mega-menu-item {
@@ -217,37 +238,75 @@
   align-items: flex-start;
   gap: 16px;
   text-decoration: none;
-  color: #000;
-  transition: opacity 0.2s;
+  color: #fff;
+  transition: all 0.3s ease;
+  padding: 10px;
+  border-radius: 12px;
+  margin: -10px;
 }
 
 .mega-menu-item:hover {
-  opacity: 0.7;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(5px);
 }
 
 .mega-icon-box {
-  width: 40px;
-  height: 40px;
-  background-color: #f5f7fa;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.mega-menu-item:hover .mega-icon-box {
+  background-color: rgba(208, 246, 1, 0.1);
+  border-color: rgba(208, 246, 1, 0.3);
 }
 
 .mega-item-text h5 {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
   margin: 0 0 4px 0;
-  color: #000;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.mega-menu-item:hover .mega-item-text h5 {
+  color: var(--accent-color);
 }
 
 .mega-item-text p {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: #999;
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.4;
+}
+
+/* Mobile Accodion Additions */
+.mobile-accordion-content {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.mobile-sub-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  display: block;
+}
+
+.mobile-sub-link:hover {
+  color: var(--accent-color);
 }
 
 @media (max-width: 992px) {
