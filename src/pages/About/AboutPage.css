@@ -56,8 +56,10 @@ body {
 /* ─── Top Banner / Hero ─────────────────────────── */
 .about-banner {
   position: relative;
-  min-height: 75vh; /* Increased height for more impact */
-  padding: 160px 5% 100px; /* Added top padding to clear the fixed navbar */
+  min-height: 75vh;
+  /* Increased height for more impact */
+  padding: 160px 5% 100px;
+  /* Added top padding to clear the fixed navbar */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -793,31 +795,61 @@ body {
 }
 
 .stat-icon {
-  font-size: 2.1rem;
   color: var(--accent);
   margin-bottom: 26px;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.stat-item:nth-child(1) .stat-icon {
+  color: #a855f7;
+}
+
+/* Purple for Users */
+.stat-item:nth-child(2) .stat-icon {
+  color: #f43f5e;
+}
+
+/* Pink/Red for Rocket */
+.stat-item:nth-child(3) .stat-icon {
+  color: #f59e0b;
+}
+
+/* Gold for Experience */
+.stat-item:nth-child(4) .stat-icon {
+  color: #06b6d4;
+}
+
+/* Cyan for Globe */
+
+.stat-item:hover .stat-icon {
+  transform: translateY(-5px);
 }
 
 .stat-number {
-  font-size: clamp(3rem, 5vw, 5.5rem);
-  font-weight: 800;
-  margin-bottom: 14px;
+  font-size: clamp(2.8rem, 5vw, 5.2rem);
+  font-weight: 900;
+  margin-bottom: 10px;
   color: var(--text-primary);
-  letter-spacing: -4px;
-  line-height: 0.95;
+  letter-spacing: -2px;
+  line-height: 1;
+  font-family: 'Outfit', sans-serif;
 }
 
 .stat-number span {
   color: var(--accent);
+  margin-left: 8px;
 }
 
 .stat-label {
-  font-size: 0.86rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 800;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   text-transform: uppercase;
+  margin-top: 10px;
 }
 
 /* ─── Expertise Section ─────────────────────────── */

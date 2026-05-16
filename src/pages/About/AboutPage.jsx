@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Users, Rocket, ThumbsUp, Globe } from 'lucide-react';
 import './AboutPage.css';
 
 const AboutPage = () => {
@@ -317,22 +318,22 @@ const AboutPage = () => {
       {/* Statistics Section */}
       <section className="about-stats">
         <div className="stat-item">
-          <div className="stat-icon">👥</div>
+          <div className="stat-icon"><Users size={32} /></div>
           <div className="stat-number">210 <span>+</span></div>
           <div className="stat-label">Satisfied Clients</div>
         </div>
         <div className="stat-item">
-          <div className="stat-icon">🚀</div>
+          <div className="stat-icon"><Rocket size={32} /></div>
           <div className="stat-number">250 <span>+</span></div>
           <div className="stat-label">Completed Projects</div>
         </div>
         <div className="stat-item">
-          <div className="stat-icon">👍</div>
+          <div className="stat-icon"><ThumbsUp size={32} /></div>
           <div className="stat-number">15 <span>+</span></div>
           <div className="stat-label">Years of Experience</div>
         </div>
         <div className="stat-item">
-          <div className="stat-icon">🌐</div>
+          <div className="stat-icon"><Globe size={32} /></div>
           <div className="stat-number">48 <span>+</span></div>
           <div className="stat-label">Professional Team</div>
         </div>
