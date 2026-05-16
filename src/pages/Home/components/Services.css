@@ -1,149 +1,550 @@
+/* ========== SERVICES SECTION ========== */
 .services-section {
-  background-color: var(--bg-color);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.services-header {
-  margin-bottom: 80px;
-  max-width: 600px;
-}
-
-.section-title {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 700;
-  margin-bottom: 24px;
-}
-
-.section-subtitle {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-}
-
-.services-list {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.service-item {
-  display: flex;
-  align-items: center;
-  padding: 40px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-  transition: padding 0.3s ease;
+  background-color: #07070E;
+  padding: 130px 0;
   position: relative;
   overflow: hidden;
 }
 
-.service-item::before {
+/* Override global container padding for this section */
+.services-section .container {
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 100%;
+}
+
+.services-section::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(208, 246, 1, 0.03) 0%, rgba(0,0,0,0) 100%);
-  transform: translateX(-100%);
-  transition: transform 0.5s ease;
-  z-index: 0;
+  bottom: -200px;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(208, 246, 1, 0.04) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.service-item:hover::before {
-  transform: translateX(0);
+/* ---- Header ---- */
+.services-header {
+  text-align: center;
+  margin-bottom: 72px;
 }
 
-.service-number {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.3);
-  width: 80px;
-  flex-shrink: 0;
-  z-index: 1;
-}
-
-.service-content {
-  flex-grow: 1;
-  display: grid;
-  grid-template-columns: 350px 1fr;
-  align-items: center;
-  gap: 40px;
-  z-index: 1;
-}
-
-.service-title {
-  font-size: 2.5rem;
+.services-eyebrow {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
   font-weight: 600;
-  transition: color 0.3s ease;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #d0f601;
+  background: rgba(208, 246, 1, 0.08);
+  border: 1px solid rgba(208, 246, 1, 0.2);
+  padding: 6px 18px;
+  border-radius: 100px;
+  margin-bottom: 26px;
 }
 
-.service-item:hover .service-title {
-  color: var(--accent-color);
+.services-main-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.3rem, 4vw, 3.3rem);
+  font-weight: 700;
+  letter-spacing: -2px;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0 0 20px;
 }
 
-.service-subitems {
-  display: flex;
-  flex-wrap: wrap;
+.services-title-accent {
+  background: linear-gradient(90deg, #d0f601, #a8d200);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.services-main-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: #7a7a8a;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ============================================
+   MAIN SPLIT LAYOUT
+   ============================================ */
+.services-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 100%;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* ============================================
+   LEFT — 3-column service grid
+   ============================================ */
+.services-grid-left {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 
-.service-subitem {
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 16px;
-  border-radius: 40px;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
+.srv-grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px 16px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.srv-grid-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(208, 246, 1, 0.07) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.srv-grid-item:hover {
+  border-color: rgba(208, 246, 1, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.srv-grid-item:hover::before,
+.srv-grid-item.active::before {
+  opacity: 1;
+}
+
+.srv-grid-item.active {
+  background: rgba(208, 246, 1, 0.07);
+  border-color: rgba(208, 246, 1, 0.3);
+  box-shadow: 0 0 20px rgba(208, 246, 1, 0.1);
+}
+
+.srv-grid-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7a7a8a;
   transition: all 0.3s ease;
-}
-
-.service-item:hover .service-subitem {
-  border-color: rgba(255, 255, 255, 0.2);
-  color: var(--text-primary);
-}
-
-.service-item:hover .service-subitem:hover {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
-  color: #000;
-}
-
-.service-arrow {
-  margin-left: 24px;
+  position: relative;
   z-index: 1;
 }
 
-.arrow-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.srv-grid-item:hover .srv-grid-icon,
+.srv-grid-item.active .srv-grid-icon {
+  background: rgba(208, 246, 1, 0.12);
+  border-color: rgba(208, 246, 1, 0.25);
+  color: #d0f601;
+}
+
+.srv-grid-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #9a9aaa;
+  line-height: 1.3;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+  flex: 1;
+}
+
+.srv-grid-item:hover .srv-grid-title,
+.srv-grid-item.active .srv-grid-title {
+  color: #fff;
+}
+
+.srv-grid-arrow {
+  color: #404055;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
 }
 
-@media (max-width: 992px) {
-  .service-content {
+.srv-grid-item:hover .srv-grid-arrow,
+.srv-grid-item.active .srv-grid-arrow {
+  color: #d0f601;
+  transform: translate(2px, -2px);
+}
+
+/* ============================================
+   RIGHT — Panel Wrapper (for comet + panel)
+   ============================================ */
+.services-panel-wrapper {
+  position: relative;
+  perspective: 1200px;
+}
+
+/* ============================================
+   STAR ANIMATION — Top-left → Bottom-right, trail points upper-left
+   ============================================ */
+.asteroid {
+  position: absolute;
+  z-index: 20;
+  pointer-events: none;
+  top: -60px;
+  left: -60px;         /* top-left corner, same diagonal path */
+  width: 50px;
+  height: 50px;
+  animation: asteroidFly 0.5s ease-in forwards;  /* half second */
+}
+
+/* 5-point Star shape */
+.asteroid-body {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 14px;
+  left: 14px;
+  background: #ffffff;
+  clip-path: polygon(
+    50% 0%,  61% 35%, 98% 35%,
+    68% 57%, 79% 91%, 50% 70%,
+    21% 91%, 32% 57%,  2% 35%,
+    39% 35%
+  );
+  filter:
+    drop-shadow(0 0 4px #ffffff)
+    drop-shadow(0 0 10px #d0f601)
+    drop-shadow(0 0 20px rgba(208, 246, 1, 0.8));
+}
+
+/* Glow halo — star color (white core, neon-green outer) */
+.asteroid-fire {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(208, 246, 1, 0.65) 35%,
+    rgba(208, 246, 1, 0.2) 65%,
+    transparent 80%
+  );
+  filter: blur(4px);
+  animation: firePulse 0.1s ease-in-out infinite alternate;
+}
+
+@keyframes firePulse {
+  from { transform: scale(1);    opacity: 0.85; }
+  to   { transform: scale(1.28); opacity: 1;    }
+}
+
+/*
+  Trail — extends to the LEFT of the .asteroid element.
+  Since the whole element is rotated 45deg in the keyframe,
+  "left" in local space = upper-left on screen = correct diagonal trail.
+*/
+.asteroid-trail {
+  position: absolute;
+  top: 50%;
+  right: 100%;              /* extends LEFT of the asteroid container */
+  transform: translateY(-50%);
+  width: 220px;
+  height: 10px;
+  background: linear-gradient(
+    to left,                /* right side (near star) bright, fades left */
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(208, 246, 1, 0.65) 30%,
+    rgba(208, 246, 1, 0.2)  65%,
+    transparent 100%
+  );
+  border-radius: 5px 0 0 5px;
+  filter: blur(3px);
+}
+
+@keyframes asteroidFly {
+  0% {
+    top: -60px;
+    left: -60px;
+    transform: scale(0.25) rotate(45deg); /* rotate to align with diagonal travel */
+    opacity: 0;
+  }
+  12% { opacity: 1; }
+  100% {
+    top: calc(100% - 60px);
+    left: calc(100% - 60px);
+    transform: scale(1.1) rotate(45deg);  /* keep rotation throughout */
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   SHATTER — Panel breaks into pieces on impact
+   ============================================ */
+
+.services-panel {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 50px 44px;
+  min-height: 420px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Impact flash + fade out on shatter */
+.panel-shatter {
+  animation: impactFlash 0.48s ease forwards;
+  overflow: visible !important;
+}
+
+@keyframes impactFlash {
+  0%   { box-shadow: none; opacity: 1; }
+  30%  {
+    box-shadow:
+      0 0 60px 20px rgba(255, 140, 30, 0.7),
+      inset 0 0 40px rgba(255, 80, 0, 0.4);
+    opacity: 1;
+  }
+  100% { box-shadow: none; opacity: 0; }
+}
+
+/* Shard pieces — fall DOWNWARD like broken glass with gravity */
+.shard {
+  position: absolute;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(208, 246, 1, 0.18) 40%,
+    rgba(30, 30, 50, 0.75) 100%
+  );
+  border: 1px solid rgba(208, 246, 1, 0.3);
+  border-radius: 2px;
+  clip-path: polygon(0% 20%, 80% 0%, 100% 60%, 30% 100%, 0% 80%);
+  animation: shardFall 0.52s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+  z-index: 30;
+}
+
+/* Gravity-like fall — pieces fall DOWN and sideways a bit, then fade */
+@keyframes shardFall {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    /* --ty should be large positive (downward), --tx is small sideways drift */
+    transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.services-panel::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(208, 246, 1, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.services-panel.panel-spin {
+  animation: panelSpin 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+}
+
+/* ============================================
+   DEFAULT PANEL STATE — Pole Web Brand
+   ============================================ */
+.panel-default {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  animation: contentFadeIn 0.4s ease;
+}
+
+.panel-brand-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  margin-bottom: 32px;
+}
+
+.brand-pole {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -2px;
+}
+
+.brand-web {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #d0f601;
+  letter-spacing: -2px;
+}
+
+.panel-default-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 16px;
+  letter-spacing: -0.5px;
+}
+
+.panel-default-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #7a7a8a;
+  line-height: 1.8;
+  margin: 0 0 32px;
+}
+
+.panel-default-hint {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(208, 246, 1, 0.45);
+  font-style: italic;
+  margin-top: auto;
+}
+
+/* ============================================
+   SERVICE DETAIL PANEL
+   ============================================ */
+.panel-detail {
+  animation: contentFadeIn 0.35s ease;
+}
+
+@keyframes contentFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.panel-icon-wrapper {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: rgba(208, 246, 1, 0.1);
+  border: 1px solid rgba(208, 246, 1, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d0f601;
+  margin-bottom: 24px;
+}
+
+.panel-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -1px;
+  margin: 0 0 14px;
+}
+
+.panel-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #7a7a8a;
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+
+.panel-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 28px;
+}
+
+.panel-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: #ccc;
+  font-weight: 500;
+}
+
+.panel-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d0f601;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(208, 246, 1, 0.5);
+}
+
+.panel-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #05050A;
+  background: #d0f601;
+  padding: 13px 26px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.panel-cta:hover {
+  background: #c4e800;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(208, 246, 1, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .services-split {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 32px;
+  }
+
+  .services-grid-left {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 768px) {
-  .service-item {
-    flex-wrap: wrap;
-    padding: 30px 0;
+@media (max-width: 640px) {
+  .services-grid-left {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .service-number {
-    width: 100%;
-    margin-bottom: 16px;
+
+  .services-panel {
+    padding: 36px 28px;
   }
-  
-  .service-arrow {
-    display: none;
+
+  .panel-list {
+    grid-template-columns: 1fr;
   }
 }

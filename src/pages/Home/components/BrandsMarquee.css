@@ -1,52 +1,154 @@
-.brands-marquee-section {
-  background-color: var(--bg-color);
-  padding: 40px 0 80px;
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+/* BrandsMarquee.css */
+.tech-section {
+  background-color: #05050A; /* Matches Hero deep dark background */
+  padding: 100px 0 120px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
 }
 
-.brands-marquee-wrapper {
-  max-width: 100%;
-  overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 30px 0;
-  position: relative;
+.tech-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 80px;
+  padding: 0 20px;
+}
+
+.tech-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #fff;
+  margin-bottom: 24px;
+  font-weight: 700;
+  letter-spacing: -3px;
+  line-height: 1;
+}
+
+.tech-title-serif {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #94a3b8;
+  margin-left: 10px;
+}
+
+.tech-subtitle {
+  font-family: 'Inter', sans-serif;
+  color: #94a3b8;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.marquee-stack {
   display: flex;
+  flex-direction: column;
+  gap: 24px; /* Space between rows */
+  position: relative;
+  /* Mask to fade out left and right edges */
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.marquee-wrapper {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
 }
 
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 20s linear infinite;
+  animation: scroll-left 50s linear infinite;
 }
 
-.brands-marquee-wrapper:hover .marquee-track {
+.marquee-reverse {
+  animation: scroll-right 50s linear infinite;
+}
+
+.marquee-track:hover {
   animation-play-state: paused;
 }
 
-@keyframes marquee {
+.marquee-set {
+  display: flex;
+  gap: 24px;
+  padding-right: 24px; /* Ensure gap between sets is consistent */
+}
+
+.tech-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.tech-pill:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.02);
+}
+
+.tech-emoji {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.tech-name {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #94a3b8;
+  transition: color 0.3s ease;
+}
+
+.tech-pill:hover .tech-name {
+  color: #ffffff;
+}
+
+/* 
+  Since we have exactly 4 sets rendered (.marquee-set), 
+  translating by 50% shifts exactly 2 full sets. 
+  This creates a mathematically perfect infinite loop.
+*/
+@keyframes scroll-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-.brand-item {
-  margin: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
-.brand-item:hover {
-  opacity: 1;
-}
-
-.brand-text {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
+@media (max-width: 768px) {
+  .tech-pill {
+    padding: 10px 20px;
+    gap: 8px;
+  }
+  .tech-name {
+    font-size: 0.9rem;
+  }
+  .tech-emoji {
+    font-size: 1.1rem;
+  }
+  .marquee-track {
+    animation-duration: 35s;
+  }
+  .marquee-reverse {
+    animation-duration: 35s;
+  }
 }
