@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 // Pages
 import HomePage from './pages/Home/HomePage';
 import WorksPage from './pages/WorksPage';
-import ServicesPage from './pages/Services/ServicesPage';
+
 import WebDevelopment from './pages/Services/WebDevelopment';
 import AppDevelopment from './pages/Services/AppDevelopment';
 import SoftwareDevelopment from './pages/Services/SoftwareDevelopment';
@@ -34,11 +34,11 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/works" element={<WorksPage />} />
-            <Route path="/services" element={<ServicesPage />} />
+            
             <Route path="/services/web-development" element={<WebDevelopment />} />
             <Route path="/services/app-development" element={<AppDevelopment />} />
             <Route path="/services/software-development" element={<SoftwareDevelopment />} />
-            <Route path="/services/e-commerce-solutions" element={<EcommerceSolutions />} />
+            <Route path="/services/ecommerce-solutions" element={<EcommerceSolutions />} />
             <Route path="/services/aws-devops" element={<AwsDevops />} />
             <Route path="/services/hosting-server-management" element={<HostingServerManagement />} />
             <Route path="/services/api-integrations" element={<ApiIntegrations />} />
