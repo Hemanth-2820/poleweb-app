@@ -127,7 +127,7 @@ const Services = () => {
   const currentService = displayedService !== null ? services[displayedService] : null;
 
   return (
-    <section className="services-section">
+    <section className="services-section" id="services">
       <div className="container">
         {/* Section Header */}
         <div className="services-header">

@@ -185,14 +185,14 @@ body {
 
 .about-banner-content .btn-get-started,
 .about-banner-content button,
-.about-banner-content .btn-submit {
+.about-banner-content .about-container .btn-submit {
   margin-top: 54px;
 }
 
 /* ─── Common Button Style ───────────────────────── */
 .btn-get-started,
 .btn-quote,
-.btn-submit {
+.about-container .btn-submit {
   background: var(--accent);
   color: #050505;
   padding: 16px 38px;
@@ -657,21 +657,21 @@ body {
     rgba(255, 255, 255, 0.018);
 }
 
-.form-grid {
+.about-container .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
 }
 
-.form-group {
+.about-container .form-group {
   margin-bottom: 20px;
 }
 
-.form-group.full-width {
+.about-container .form-group.full-width {
   grid-column: span 2;
 }
 
-.error-text {
+.about-container .error-text {
   color: #ff4d4d;
   font-size: 0.85rem;
   font-weight: 600;
@@ -680,7 +680,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-.form-group label {
+.about-container .form-group label {
   display: block;
   margin-bottom: 10px;
   font-weight: 800;
@@ -690,12 +690,12 @@ body {
   color: rgba(255, 255, 255, 0.62);
 }
 
-.form-group label span {
+.about-container .form-group label span {
   color: var(--accent);
 }
 
-.form-group input,
-.form-group textarea {
+.about-container .form-group input,
+.about-container .about-container .form-group textarea {
   width: 100%;
   padding: 17px 18px;
   border: 1px solid var(--border-subtle);
@@ -708,25 +708,25 @@ body {
   box-sizing: border-box;
 }
 
-.form-group textarea {
+.about-container .form-group textarea {
   min-height: 135px;
   resize: vertical;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.about-container .form-group input:focus,
+.about-container .form-group textarea:focus {
   outline: none;
   border-color: var(--accent-border);
   background: rgba(215, 255, 0, 0.035);
   box-shadow: 0 0 0 4px rgba(215, 255, 0, 0.045);
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.about-container .form-group input::placeholder,
+.about-container .form-group textarea::placeholder {
   color: rgba(255, 255, 255, 0.42);
 }
 
-.whatsapp-input {
+.about-container .whatsapp-input {
   display: flex;
   align-items: center;
   border: 1px solid var(--border-subtle);
@@ -736,29 +736,29 @@ body {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.whatsapp-input:focus-within {
+.about-container .whatsapp-input:focus-within {
   border-color: var(--accent-border);
   box-shadow: 0 0 0 4px rgba(215, 255, 0, 0.045);
 }
 
-.whatsapp-input img {
+.about-container .whatsapp-input img {
   width: 20px;
   margin-right: 10px;
   opacity: 0.75;
 }
 
-.whatsapp-input input {
+.about-container .whatsapp-input input {
   border: none;
   padding: 17px 0;
   background: transparent;
   box-shadow: none;
 }
 
-.whatsapp-input input:focus {
+.about-container .whatsapp-input input:focus {
   box-shadow: none;
 }
 
-.btn-submit {
+.about-container .btn-submit {
   width: auto;
   min-width: 210px;
   margin-top: 16px;
@@ -1077,11 +1077,11 @@ footer,
     padding: 44px 26px;
   }
 
-  .form-grid {
+  .about-container .form-grid {
     grid-template-columns: 1fr;
   }
 
-  .form-group.full-width {
+  .about-container .form-group.full-width {
     grid-column: span 1;
   }
 
@@ -1132,7 +1132,7 @@ footer,
 
   .btn-get-started,
   .btn-quote,
-  .btn-submit {
+  .about-container .btn-submit {
     width: 100%;
     text-align: center;
   }
