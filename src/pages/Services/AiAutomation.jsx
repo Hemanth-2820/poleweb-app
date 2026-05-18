@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Monitor, Code, Rocket, Shield, Settings } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Cpu, Code, Rocket, Shield, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './AiAutomation.css';
 
@@ -30,22 +30,57 @@ const AiAutomation = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">AI & Automation</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Intelligent Workflows</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">Revolutionizing business efficiency by automating complex, repetitive tasks through intelligent AI-driven workflow orchestration.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">AI Automation</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">Business Process Automation</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">Optimize organizational speed and accuracy by replacing slow manual tasks with smart, autonomous AI-driven agents and workflow integrations.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium custom business automation pipeline mockup */}
+              <div className="automation-pipeline-mockup glass-card">
+                <div className="mockup-header">
+                  <div className="dots"><span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span></div>
+                  <span className="window-title">poleweb.app/workflow-builder</span>
+                </div>
+                <div className="mockup-body">
+                  <div className="pipeline-steps-grid">
+                    <div className="pipeline-node active">
+                      <Cpu size={16} className="node-icon" />
+                      <span>Trigger: New Lead</span>
+                    </div>
+                    <div className="pipeline-arrow">↓</div>
+                    <div className="pipeline-node active">
+                      <Settings size={16} className="node-icon spin" />
+                      <span>AI Lead Score Agent</span>
+                    </div>
+                    <div className="pipeline-arrow">↓</div>
+                    <div className="pipeline-node destination">
+                      <CheckCircle2 size={16} className="node-icon" />
+                      <span>Route to CRM & Alert Slack</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -60,7 +95,7 @@ const AiAutomation = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="section-heading">Professional AI & Automation Solutions</h2>
+              <h2 className="section-heading">Professional Automation Solutions</h2>
               <p>
                 In today's fast-paced digital world, having a robust and scalable solution is not just an option—it's a necessity. 
                 Our team provides cutting-edge digital services that empower your brand.
@@ -123,10 +158,10 @@ const AiAutomation = () => {
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            {["AI Integrations","Workflow Automation","Smart Business Automation","AI-Based Features","Process Automation","Business Automation Systems"].map((offer, index) => (
+            {["Custom Workflow Automation","Make / Zapier Automations","Automated Email Systems","AI-Powered Data Scraping","Lead Generation Automation","CRM Setup & Integrations","Inventory Synchronization"].map((offer, index) => (
               <motion.div key={index} variants={fadeIn} className="offer-card glass-card">
                 <div className="offer-icon-wrapper">
-                  <Monitor size={24} />
+                  <Cpu size={24} />
                 </div>
                 <h3>{offer}</h3>
                 <p>Premium implementation of {offer.toLowerCase()} for your business growth.</p>

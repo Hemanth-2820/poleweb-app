@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Monitor, Code, Rocket, Shield, Settings } from 'lucide-react';
+import { ArrowRight, CheckCircle2, PhoneCall, Code, Rocket, Shield, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './IvrSolutions.css';
 
@@ -30,22 +30,57 @@ const IvrSolutions = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">IVR Solutions</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Automated Voice Systems</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">Modernizing your customer support with intelligent voice response systems that streamline communication and improve resolution times.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">IVR Solutions</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">Interactive Voice Response</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">Deploy automated, multi-level cloud phone routing menus and AI voice systems designed to qualify leads and instantly resolve routine client inquiries.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium custom telephony flow routing visual */}
+              <div className="telephony-flow-mockup glass-card">
+                <div className="mockup-header">
+                  <div className="dots"><span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span></div>
+                  <span className="window-title">poleweb.app/ivr-router</span>
+                </div>
+                <div className="mockup-body">
+                  <div className="ivr-routing-map">
+                    <div className="ivr-node root">
+                      <PhoneCall size={16} className="node-icon" />
+                      <span>Incoming Call</span>
+                    </div>
+                    <div className="ivr-branch-row">
+                      <div className="ivr-node branch active">
+                        <span className="digit">1</span>
+                        <span>Sales Team</span>
+                      </div>
+                      <div className="ivr-node branch">
+                        <span className="digit">2</span>
+                        <span>Tech Support</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -60,7 +95,7 @@ const IvrSolutions = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="section-heading">Professional IVR Solutions Solutions</h2>
+              <h2 className="section-heading">Professional IVR Solutions</h2>
               <p>
                 In today's fast-paced digital world, having a robust and scalable solution is not just an option—it's a necessity. 
                 Our team provides cutting-edge digital services that empower your brand.
@@ -123,10 +158,10 @@ const IvrSolutions = () => {
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            {["IVR Setup","Automated Voice Response Systems","Business Call Management","Customer Support IVR","Cloud IVR Solutions","Multi-Level IVR Systems"].map((offer, index) => (
+            {["Custom IVR Systems","Call Routing Systems","Automated Call Response","Voice Menu Integrations","Telephony Applications"].map((offer, index) => (
               <motion.div key={index} variants={fadeIn} className="offer-card glass-card">
                 <div className="offer-icon-wrapper">
-                  <Monitor size={24} />
+                  <PhoneCall size={24} />
                 </div>
                 <h3>{offer}</h3>
                 <p>Premium implementation of {offer.toLowerCase()} for your business growth.</p>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Monitor, Code, Rocket, Shield, Settings } from 'lucide-react';
+import { ArrowRight, CheckCircle2, FileCode2, Code, Rocket, Shield, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './SoftwareDevelopment.css';
 
@@ -30,22 +30,72 @@ const SoftwareDevelopment = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">Software Development</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Custom Enterprise Solutions</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">Building robust, tailor-made software solutions that solve complex business challenges through intelligent architecture and modern engineering.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">Software Development</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">Custom Software Solutions</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">Building tailored, high-performance desktop and system-level applications, invoicing databases, and complex management platforms optimized for organizational efficiency.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium custom software database management illustration */}
+              <div className="software-dashboard-mockup glass-card">
+                <div className="mockup-header">
+                  <div className="dots"><span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span></div>
+                  <span className="window-title">poleweb.app/enterprise-suite</span>
+                </div>
+                <div className="mockup-body">
+                  <div className="mockup-db-sidebar">
+                    <div className="db-item active">Billing Module</div>
+                    <div className="db-item">Inventory System</div>
+                    <div className="db-item">CRM Database</div>
+                  </div>
+                  <div className="mockup-db-content">
+                    <div className="db-table-header">
+                      <span>Ref ID</span>
+                      <span>Customer</span>
+                      <span>Status</span>
+                      <span>Total</span>
+                    </div>
+                    <div className="db-table-row">
+                      <span>#TX-902</span>
+                      <span>Acme Corp</span>
+                      <span className="badge green">Paid</span>
+                      <span>$12,450</span>
+                    </div>
+                    <div className="db-table-row">
+                      <span>#TX-901</span>
+                      <span>Globex Inc</span>
+                      <span className="badge green">Paid</span>
+                      <span>$8,900</span>
+                    </div>
+                    <div className="db-table-row">
+                      <span>#TX-900</span>
+                      <span>Initech Corp</span>
+                      <span className="badge yellow">Pending</span>
+                      <span>$3,200</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -60,7 +110,7 @@ const SoftwareDevelopment = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="section-heading">Professional Software Development Solutions</h2>
+              <h2 className="section-heading">Professional Custom Software</h2>
               <p>
                 In today's fast-paced digital world, having a robust and scalable solution is not just an option—it's a necessity. 
                 Our team provides cutting-edge digital services that empower your brand.
@@ -126,7 +176,7 @@ const SoftwareDevelopment = () => {
             {["Custom Software Development","Billing Software","Inventory Management Systems","Management Systems","Automation Software","Desktop Applications"].map((offer, index) => (
               <motion.div key={index} variants={fadeIn} className="offer-card glass-card">
                 <div className="offer-icon-wrapper">
-                  <Monitor size={24} />
+                  <FileCode2 size={24} />
                 </div>
                 <h3>{offer}</h3>
                 <p>Premium implementation of {offer.toLowerCase()} for your business growth.</p>

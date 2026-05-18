@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Monitor, Code, Rocket, Shield, Settings } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Cloud, Code, Rocket, Shield, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './AwsDevops.css';
 
@@ -30,22 +30,62 @@ const AwsDevops = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">AWS & DevOps</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Cloud & Infrastructure</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">Transforming your operations with automated cloud infrastructure that ensures maximum uptime, security, and scalability for global applications.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">AWS & DevOps</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">Cloud & Infrastructure</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">Transforming your operations with automated cloud infrastructure that ensures maximum uptime, security, and scalability for global applications.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium custom CI/CD and AWS infrastructure graph mockup */}
+              <div className="cloud-network-mockup glass-card">
+                <div className="mockup-header">
+                  <div className="dots"><span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span></div>
+                  <span className="window-title">aws.console/infrastructure-map</span>
+                </div>
+                <div className="mockup-body">
+                  <div className="network-visualizer">
+                    <div className="infra-node origin">
+                      <Cloud size={20} className="node-icon" />
+                      <span>AWS VPC</span>
+                    </div>
+                    <div className="infra-line"></div>
+                    <div className="infra-node cluster">
+                      <Settings size={18} className="node-icon spin" />
+                      <span>EKS Cluster</span>
+                    </div>
+                    <div className="infra-line"></div>
+                    <div className="infra-node destination">
+                      <Shield size={18} className="node-icon" />
+                      <span>CloudFront</span>
+                    </div>
+                  </div>
+                  <div className="pipeline-terminal">
+                    <div className="pipeline-step active">✓ Terraform Plan: 0 errors</div>
+                    <div className="pipeline-step active">✓ Docker Build: Completed</div>
+                    <div className="pipeline-step active">✓ Kubernetes Deploy: Success [v2.4.0]</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -126,7 +166,7 @@ const AwsDevops = () => {
             {["AWS Cloud Setup","DevOps Solutions","CI/CD Pipeline Setup","Docker Configuration","Kubernetes Setup","Server Deployment","Infrastructure Automation","Monitoring & Logging","Cloud Architecture Setup"].map((offer, index) => (
               <motion.div key={index} variants={fadeIn} className="offer-card glass-card">
                 <div className="offer-icon-wrapper">
-                  <Monitor size={24} />
+                  <Cloud size={24} />
                 </div>
                 <h3>{offer}</h3>
                 <p>Premium implementation of {offer.toLowerCase()} for your business growth.</p>

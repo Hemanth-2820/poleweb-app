@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Monitor, Code, Rocket, Shield, Settings } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Cable, Code, Rocket, Shield, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './ApiIntegrations.css';
 
@@ -30,22 +30,55 @@ const ApiIntegrations = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">API Integrations</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Seamless Ecosystems</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">Connecting your digital ecosystem with secure, high-performance API integrations that enable seamless data flow between all your business tools.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">API Integrations</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">Connecting Third-Party Services</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">Enable frictionless, real-time data syncs by integrating custom Webhook hubs, payment gateways, and WhatsApp CRM systems tailored to your workflows.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium custom API request-response payload console mockup */}
+              <div className="api-payload-console glass-card">
+                <div className="mockup-header">
+                  <div className="dots"><span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span></div>
+                  <span className="window-title">api.poleweb.app/v1/sync</span>
+                </div>
+                <div className="mockup-body">
+                  <div className="api-url-bar">
+                    <span className="method-post">POST</span>
+                    <span className="url-text">/webhooks/whatsapp</span>
+                  </div>
+                  <div className="api-json-stream">
+                    <div className="json-line">{"{"}</div>
+                    <div className="json-line indent"><span className="json-key">"event"</span>: <span className="json-val">"message.received"</span>,</div>
+                    <div className="json-line indent"><span className="json-key">"payload"</span>: {"{"}</div>
+                    <div className="json-line indent-2"><span className="json-key">"sender"</span>: <span className="json-val">"+18005550199"</span>,</div>
+                    <div className="json-line indent-2"><span className="json-key">"body"</span>: <span className="json-val">"Hi, sync my records please."</span></div>
+                    <div className="json-line indent">{"}"},</div>
+                    <div className="json-line indent"><span className="json-key">"status"</span>: <span className="json-val-green">"200_OK"</span></div>
+                    <div className="json-line">{"}"}</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -60,7 +93,7 @@ const ApiIntegrations = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="section-heading">Professional API Integrations Solutions</h2>
+              <h2 className="section-heading">Professional API Solutions</h2>
               <p>
                 In today's fast-paced digital world, having a robust and scalable solution is not just an option—it's a necessity. 
                 Our team provides cutting-edge digital services that empower your brand.
@@ -126,7 +159,7 @@ const ApiIntegrations = () => {
             {["Third-Party API Integration","Payment Gateway Integration","WhatsApp API Integration","SMS & Email API Setup","Automation Integrations"].map((offer, index) => (
               <motion.div key={index} variants={fadeIn} className="offer-card glass-card">
                 <div className="offer-icon-wrapper">
-                  <Monitor size={24} />
+                  <Cable size={24} />
                 </div>
                 <h3>{offer}</h3>
                 <p>Premium implementation of {offer.toLowerCase()} for your business growth.</p>

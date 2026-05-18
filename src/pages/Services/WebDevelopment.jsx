@@ -30,22 +30,68 @@ const WebDevelopment = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">Web Development</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Business & Custom Applications</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">We build high-performance, responsive websites and web applications tailored to your business needs, ensuring a seamless user experience and scalable architecture.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">Web Development</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">Business & Custom Applications</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">We build high-performance, responsive websites and web applications tailored to your business needs, ensuring a seamless user experience and scalable architecture.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium futuristic SaaS dashboard console */}
+              <div className="futuristic-dashboard glass-card">
+                <div className="dashboard-header">
+                  <div className="dots"><span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span></div>
+                  <div className="window-title">poleweb.app/console</div>
+                </div>
+                <div className="dashboard-body">
+                  <div className="dash-sidebar">
+                    <div className="dash-nav-item active"><Monitor size={14} /></div>
+                    <div className="dash-nav-item"><Code size={14} /></div>
+                    <div className="dash-nav-item"><Settings size={14} /></div>
+                  </div>
+                  <div className="dash-main">
+                    <div className="dash-metric-row">
+                      <div className="dash-metric-card">
+                        <div className="label">Performance</div>
+                        <div className="value">99.8%</div>
+                      </div>
+                      <div className="dash-metric-card">
+                        <div className="label">Global CDN</div>
+                        <div className="value">Active</div>
+                      </div>
+                    </div>
+                    <div className="dash-chart-container">
+                      <svg viewBox="0 0 300 100" className="dash-chart">
+                        <path d="M0 80 Q 50 30 100 60 T 200 20 T 300 40" fill="none" stroke="#d0f601" strokeWidth="3" />
+                        <path d="M0 80 Q 50 30 100 60 T 200 20 T 300 40 L 300 100 L 0 100 Z" fill="rgba(208, 246, 1, 0.03)" />
+                      </svg>
+                    </div>
+                    <div className="dash-terminal">
+                      <div className="terminal-line"><span className="term-green">$</span> npm run build</div>
+                      <div className="terminal-line term-dim">✓ 12 routes optimized, server online</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -60,7 +106,7 @@ const WebDevelopment = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="section-heading">Professional Web Development Solutions</h2>
+              <h2 className="section-heading">Professional Web Solutions</h2>
               <p>
                 In today's fast-paced digital world, having a robust and scalable solution is not just an option—it's a necessity. 
                 Our team provides cutting-edge digital services that empower your brand.

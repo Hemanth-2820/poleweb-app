@@ -1,141 +1,349 @@
-
 /* =========================================================================
-   CLEAN PROFESSIONAL SERVICE PAGE STYLES - ROOT COLORS ONLY
+   SCOPED STYLES FOR IVR SOLUTIONS PAGE (.ivrsolutions-page)
    ========================================================================= */
 
-.service-page {
-  background-color: var(--bg-color);
+.ivrsolutions-page.service-page {
+  background-color: #0A0A0A;
   color: var(--text-primary);
   min-height: 100vh;
   padding-top: 100px;
   overflow: hidden;
+  position: relative;
 }
 
-.massive-heading {
+/* Subtle tech grid lines */
+.ivrsolutions-page.service-page::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.006) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.006) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Hero Split Grid Layout */
+.ivrsolutions-page .hero-split-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 50px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ivrsolutions-page .massive-heading {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-size: clamp(2.5rem, 5.5vw, 5rem); /* Up to 80px on large screens */
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.05;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
+  letter-spacing: -0.03em;
 }
 
-.section-heading {
+.ivrsolutions-page .section-heading {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.5rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 700;
-  margin-bottom: 1rem;
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
-.hero-subtitle {
+.ivrsolutions-page .hero-subtitle {
   font-size: 1.5rem;
-  color: var(--accent-color);
+  color: #FFAE19; /* Electric golden orange theme color */
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
 
-.section-subheading {
+.ivrsolutions-page .hero-desc {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.ivrsolutions-page .section-subheading {
   font-size: 1.2rem;
   color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto 3rem;
 }
 
-.text-center { text-align: center; }
+.ivrsolutions-page .text-center { text-align: center; }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  border: var(--glass-border);
+/* Premium Glassmorphic Cards Scoped */
+.ivrsolutions-page .glass-card {
+  background: rgba(18, 18, 20, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 20px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 1;
 }
 
-.glass-card:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: var(--accent-color);
+.ivrsolutions-page .glass-card:hover {
+  background: rgba(24, 24, 28, 0.85);
+  border-color: #FFAE19; /* Golden Orange hover border */
+  box-shadow: 0 15px 45px -10px rgba(255, 174, 25, 0.2);
+  transform: translateY(-5px);
 }
 
-.pill {
+/* Semi-transparent Pill Scoped */
+.ivrsolutions-page .pill {
   display: inline-block;
-  background: rgba(208, 246, 1, 0.05);
-  color: var(--accent-color);
-  padding: 8px 16px;
+  background: rgba(255, 174, 25, 0.08);
+  color: #FFAE19;
+  padding: 8px 20px;
   border-radius: 30px;
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(208, 246, 1, 0.1);
+  border: 1px solid rgba(255, 174, 25, 0.2);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.btn-primary {
+/* Lime Green Interactive Button */
+.ivrsolutions-page .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background-color: var(--accent-color);
+  background-color: var(--accent-color); /* Lime Green */
   color: #000;
-  padding: 16px 32px;
+  padding: 16px 36px;
   border-radius: 50px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(208, 246, 1, 0.2);
+  border: 1px solid transparent;
+  text-decoration: none;
 }
 
-.btn-primary:hover {
+.ivrsolutions-page .btn-primary:hover {
   background-color: #fff;
+  color: #000;
+  box-shadow: 0 6px 30px rgba(255, 255, 255, 0.3);
   transform: translateY(-3px);
 }
 
-/* HERO SECTION */
-.service-hero {
+/* HERO SECTION DECORATIVE MESH GLOW */
+.ivrsolutions-page .service-hero {
   position: relative;
-  min-height: 70vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
-  padding: 100px 0;
-  background: radial-gradient(circle at 50% -20%, rgba(208, 246, 1, 0.05) 0%, var(--bg-color) 70%);
+  padding: 120px 0;
+  z-index: 1;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 115, 0, 0.25) 0%, rgba(255, 115, 0, 0) 50%),
+    radial-gradient(circle at 90% 10%, rgba(255, 174, 25, 0.2) 0%, rgba(255, 174, 25, 0) 45%),
+    radial-gradient(circle at 50% 30%, rgba(41, 22, 10, 0.95) 0%, rgba(10, 5, 3, 0) 70%),
+    linear-gradient(180deg, #120904 0%, #0a0a0a 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.service-hero-content { position: relative; z-index: 1; max-width: 800px; }
-.hero-desc { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.6; }
+.ivrsolutions-page .service-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ivrsolutions-page .service-hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 115, 0, 0.15) 0%, rgba(255, 115, 0, 0) 70%);
+  filter: blur(80px);
+  animation: floatGlow 12s infinite alternate ease-in-out;
+}
+
+/* Telephony Flow Mockup Graphic */
+.ivrsolutions-page .hero-visual-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ivrsolutions-page .telephony-flow-mockup {
+  width: 100%;
+  max-width: 440px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 11, 15, 0.85);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  animation: telephonyFloat 9s infinite alternate ease-in-out;
+}
+
+@keyframes telephonyFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-15px) rotate(-1deg); }
+}
+
+.ivrsolutions-page .mockup-header {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ivrsolutions-page .dots {
+  display: flex;
+  gap: 6px;
+}
+
+.ivrsolutions-page .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.ivrsolutions-page .dot.red { background: #ff5f56; }
+.ivrsolutions-page .dot.yellow { background: #ffbd2e; }
+.ivrsolutions-page .dot.green { background: #27c93f; }
+
+.ivrsolutions-page .window-title {
+  margin-left: 20px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.ivrsolutions-page .mockup-body {
+  padding: 25px;
+  min-height: 220px;
+}
+
+.ivrsolutions-page .ivr-routing-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.ivrsolutions-page .ivr-node {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: #fff;
+  z-index: 1;
+}
+
+.ivrsolutions-page .ivr-node.root {
+  border-color: rgba(255, 174, 25, 0.3);
+  box-shadow: 0 0 15px rgba(255, 174, 25, 0.1);
+}
+
+.ivrsolutions-page .ivr-branch-row {
+  display: flex;
+  gap: 25px;
+  width: 100%;
+}
+
+.ivrsolutions-page .ivr-node.branch {
+  flex: 1;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.ivrsolutions-page .ivr-node.branch.active {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(208, 246, 1, 0.1);
+}
+
+.ivrsolutions-page .digit {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ivrsolutions-page .node-icon {
+  color: #FFAE19;
+}
 
 /* OVERVIEW SECTION */
-.overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.overview-text p { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem; }
-.overview-benefits { list-style: none; padding: 0; }
-.overview-benefits li { display: flex; align-items: center; gap: 15px; margin-bottom: 1rem; font-size: 1.1rem; }
-.benefit-icon { color: var(--accent-color); }
+.ivrsolutions-page .overview-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+.ivrsolutions-page .overview-text p { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.6; }
+.ivrsolutions-page .overview-benefits { list-style: none; padding: 0; }
+.ivrsolutions-page .overview-benefits li { display: flex; align-items: center; gap: 15px; margin-bottom: 1rem; font-size: 1.1rem; color: rgba(255, 255, 255, 0.85); }
+.ivrsolutions-page .benefit-icon { color: var(--accent-color); }
 
-.visual-card { padding: 30px; position: relative; overflow: hidden; }
-.visual-code-mockup { background: rgba(0,0,0,0.3); border-radius: 12px; border: var(--glass-border); overflow: hidden; }
-.mockup-header { background: rgba(255,255,255,0.05); padding: 12px 16px; display: flex; gap: 8px; }
-.dot { width: 10px; height: 10px; border-radius: 50%; opacity: 0.5; background: var(--text-secondary); }
-.mockup-body { padding: 24px; font-family: monospace; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
-.code-keyword { color: var(--accent-color); }
-.code-string { color: var(--text-primary); }
+.ivrsolutions-page .visual-card { padding: 30px; position: relative; overflow: hidden; }
+.ivrsolutions-page .visual-code-mockup { background: rgba(0,0,0,0.55); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); overflow: hidden; }
+.ivrsolutions-page .mockup-header { background: rgba(255,255,255,0.03); padding: 12px 16px; display: flex; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.ivrsolutions-page .mockup-body { padding: 24px; font-family: 'Fira Code', monospace; font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+.ivrsolutions-page .code-keyword { color: #b197ff; }
+.ivrsolutions-page .code-var { color: #74B8EC; }
+.ivrsolutions-page .code-class { color: var(--accent-color); }
+.ivrsolutions-page .code-string { color: #2ff798; }
 
 /* OFFERS GRID */
-.offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.offer-card { padding: 40px 30px; text-align: left; }
-.offer-icon-wrapper { width: 60px; height: 60px; background: rgba(208, 246, 1, 0.05); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--accent-color); margin-bottom: 1.5rem; }
-.offer-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-.offer-card p { color: var(--text-secondary); }
+.ivrsolutions-page .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; position: relative; z-index: 1; }
+.ivrsolutions-page .offer-card { padding: 40px 30px; text-align: left; }
+.ivrsolutions-page .offer-icon-wrapper { width: 60px; height: 60px; background: rgba(255, 174, 25, 0.08); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #FFAE19; margin-bottom: 1.5rem; border: 1px solid rgba(255, 174, 25, 0.2); }
+.ivrsolutions-page .offer-card h3 { font-size: 1.4rem; margin-bottom: 1rem; font-weight: 700; }
+.ivrsolutions-page .offer-card p { color: var(--text-secondary); line-height: 1.5; font-size: 0.95rem; }
 
 /* PROCESS TIMELINE */
-.timeline-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
-.timeline-item { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px; }
-.timeline-icon { width: 50px; height: 50px; background: rgba(208, 246, 1, 0.05); border: 1px solid var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-color); }
-.timeline-content { padding: 20px; width: 100%; }
+.ivrsolutions-page .timeline-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 40px; position: relative; z-index: 1; }
+.ivrsolutions-page .timeline-item { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.ivrsolutions-page .timeline-icon { width: 50px; height: 50px; background: rgba(255, 174, 25, 0.08); border: 1px solid #FFAE19; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FFAE19; transition: all 0.3s ease; }
+.ivrsolutions-page .timeline-item:hover .timeline-icon { transform: scale(1.1); border-color: var(--accent-color); color: var(--accent-color); background: rgba(208, 246, 1, 0.05); }
+.ivrsolutions-page .timeline-content { padding: 20px; width: 100%; }
+.ivrsolutions-page .timeline-content h4 { font-size: 1.15rem; margin-bottom: 6px; font-weight: 700; }
+.ivrsolutions-page .timeline-content p { font-size: 0.9rem; color: var(--text-secondary); }
 
 /* WHY US */
-.why-us-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.why-us-cards { display: flex; flex-direction: column; gap: 20px; }
-.feature-card { padding: 30px; }
-.feature-card h4 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--accent-color); }
+.ivrsolutions-page .why-us-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+.ivrsolutions-page .why-us-text p { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.6; }
+.ivrsolutions-page .why-us-cards { display: flex; flex-direction: column; gap: 20px; }
+.ivrsolutions-page .feature-card { padding: 30px; }
+.ivrsolutions-page .feature-card h4 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #FFAE19; font-weight: 700; }
+.ivrsolutions-page .feature-card p { color: var(--text-secondary); line-height: 1.5; }
 
-/* CTA */
-.cta-card { padding: 80px 40px; text-align: center; border-color: rgba(208, 246, 1, 0.1); }
-.cta-card h2 { font-size: 3rem; margin-bottom: 1rem; }
-.cta-card p { font-size: 1.2rem; color: var(--text-secondary); }
+/* CTA CARD */
+.ivrsolutions-page .cta-card { padding: 80px 40px; text-align: center; border-color: rgba(255, 174, 25, 0.15); background: radial-gradient(circle at center, rgba(255, 174, 25, 0.05) 0%, rgba(15, 15, 15, 0.8) 100%); }
+.ivrsolutions-page .cta-card h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; font-weight: 800; letter-spacing: -0.02em; }
+.ivrsolutions-page .cta-card p { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
 
-@media (max-width: 992px) { .overview-grid, .why-us-grid { grid-template-columns: 1fr; } }
-@media (max-width: 768px) { .timeline-item { width: 100%; } }
+@media (max-width: 992px) { 
+  .ivrsolutions-page .hero-split-grid { grid-template-columns: 1fr; gap: 40px; }
+  .ivrsolutions-page .overview-grid, .ivrsolutions-page .why-us-grid { grid-template-columns: 1fr; gap: 40px; } 
+}
+@media (max-width: 768px) { 
+  .ivrsolutions-page .timeline-item { width: 100%; } 
+}

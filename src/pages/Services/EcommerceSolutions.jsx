@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Monitor, Code, Rocket, Shield, Settings } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShoppingCart, Code, Rocket, Shield, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './EcommerceSolutions.css';
 
@@ -30,22 +30,64 @@ const EcommerceSolutions = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">E-Commerce Solutions</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Scalable Online Stores</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">Building high-conversion e-commerce platforms that combine premium shopping experiences with robust backend inventory management.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">E-Commerce</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">Online Stores & Marketplaces</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">Launch high-converting multi-vendor marketplaces, Shopify/WooCommerce storefronts, and optimized checkout systems engineered to maximize your online sales volume globally.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium custom storefront storefront catalogue mockup */}
+              <div className="ecommerce-store-mockup glass-card">
+                <div className="mockup-header">
+                  <div className="dots"><span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span></div>
+                  <span className="window-title">poleweb.app/checkout-console</span>
+                </div>
+                <div className="mockup-body">
+                  <div className="store-products-grid">
+                    <div className="store-product-card">
+                      <div className="prod-img"></div>
+                      <span className="prod-name">SaaS Ultra Plan</span>
+                      <span className="prod-price">$199/mo</span>
+                    </div>
+                    <div className="store-product-card">
+                      <div className="prod-img secondary"></div>
+                      <span className="prod-name">Cloud Pro API</span>
+                      <span className="prod-price">$89/mo</span>
+                    </div>
+                  </div>
+                  <div className="store-cart-status">
+                    <div className="cart-header">
+                      <ShoppingCart size={14} className="term-green" />
+                      <span>Shopping Cart</span>
+                    </div>
+                    <div className="cart-total-row">
+                      <span>Subtotal</span>
+                      <span className="term-green">$288.00</span>
+                    </div>
+                    <div className="cart-checkout-btn">Complete Purchase</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -60,7 +102,7 @@ const EcommerceSolutions = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="section-heading">Professional E-Commerce Solutions Solutions</h2>
+              <h2 className="section-heading">Professional E-Commerce Solutions</h2>
               <p>
                 In today's fast-paced digital world, having a robust and scalable solution is not just an option—it's a necessity. 
                 Our team provides cutting-edge digital services that empower your brand.
@@ -126,7 +168,7 @@ const EcommerceSolutions = () => {
             {["Online Store Development","Product Management Systems","Payment Gateway Integration","Shopify Development","WooCommerce Development","Multi-Vendor Platforms","Order Management Systems"].map((offer, index) => (
               <motion.div key={index} variants={fadeIn} className="offer-card glass-card">
                 <div className="offer-icon-wrapper">
-                  <Monitor size={24} />
+                  <ShoppingCart size={24} />
                 </div>
                 <h3>{offer}</h3>
                 <p>Premium implementation of {offer.toLowerCase()} for your business growth.</p>

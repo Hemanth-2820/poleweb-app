@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Monitor, Code, Rocket, Shield, Settings } from 'lucide-react';
+import { ArrowRight, CheckCircle2, BarChart3, Code, Rocket, Shield, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './DigitalMarketing.css';
 
@@ -30,22 +30,56 @@ const DigitalMarketing = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">Digital Marketing</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Growth & Optimization</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">Accelerating brand growth through data-driven marketing strategies that combine creative storytelling with technical optimization.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">Digital Marketing</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">SEO & Performance Marketing</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">Accelerate customer acquisition with performance marketing funnels, localized search engine optimization (SEO), and high-ROI social campaigns.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium custom marketing analytics chart dashboard mockup */}
+              <div className="marketing-analytics-mockup glass-card">
+                <div className="mockup-header">
+                  <div className="dots"><span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span></div>
+                  <span className="window-title">poleweb.app/analytics-roi</span>
+                </div>
+                <div className="mockup-body">
+                  <div className="roi-metrics-grid">
+                    <div className="roi-card">
+                      <span className="label">Monthly Traffic</span>
+                      <span className="value">+189.5%</span>
+                    </div>
+                    <div className="roi-card">
+                      <span className="label">Campaign ROI</span>
+                      <span className="value term-green">4.8x</span>
+                    </div>
+                  </div>
+                  <div className="analytics-bar-chart">
+                    <div className="bar-wrapper"><div className="bar-fill" style={{height: '40%'}}></div><span className="bar-label">SEO</span></div>
+                    <div className="bar-wrapper"><div className="bar-fill active" style={{height: '90%'}}></div><span className="bar-label">Ads</span></div>
+                    <div className="bar-wrapper"><div className="bar-fill" style={{height: '60%'}}></div><span className="bar-label">Email</span></div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -60,7 +94,7 @@ const DigitalMarketing = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="section-heading">Professional Digital Marketing Solutions</h2>
+              <h2 className="section-heading">Professional Marketing Solutions</h2>
               <p>
                 In today's fast-paced digital world, having a robust and scalable solution is not just an option—it's a necessity. 
                 Our team provides cutting-edge digital services that empower your brand.
@@ -123,10 +157,10 @@ const DigitalMarketing = () => {
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            {["SEO Optimization","Social Media Marketing","Google Ads","Meta Ads","Lead Generation","Performance Marketing","Email Marketing","Content Marketing"].map((offer, index) => (
+            {["Search Engine Optimization (SEO)","Social Media Marketing (SMM)","Pay-Per-Click (PPC) Advertising","Content Marketing","Email Marketing","Affiliate Marketing","Web Analytics & Reporting"].map((offer, index) => (
               <motion.div key={index} variants={fadeIn} className="offer-card glass-card">
                 <div className="offer-icon-wrapper">
-                  <Monitor size={24} />
+                  <BarChart3 size={24} />
                 </div>
                 <h3>{offer}</h3>
                 <p>Premium implementation of {offer.toLowerCase()} for your business growth.</p>

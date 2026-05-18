@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Monitor, Code, Rocket, Shield, Settings } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Server, Code, Rocket, Shield, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './HostingServerManagement.css';
 
@@ -30,22 +30,63 @@ const HostingServerManagement = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">Hosting & Server Management</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Secure Server Care</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">Proactive server management and premium hosting solutions designed for high-traffic enterprise applications that require 99.99% reliability.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">Hosting & Server</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">Dedicated Server Management</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">Deploy your products on high-availability bare-metal servers and managed VPS clusters equipped with automated threat intelligence and active load balancing.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium custom server status monitor mockup */}
+              <div className="server-status-monitor glass-card">
+                <div className="mockup-header">
+                  <div className="dots"><span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span></div>
+                  <span className="window-title">poleweb.app/server-metrics</span>
+                </div>
+                <div className="mockup-body">
+                  <div className="server-specs-row">
+                    <div className="spec-card">
+                      <span className="label">CPU Usage</span>
+                      <span className="value">12.8%</span>
+                    </div>
+                    <div className="spec-card">
+                      <span className="label">RAM (64GB)</span>
+                      <span className="value">24.5 GB</span>
+                    </div>
+                  </div>
+                  <div className="server-gauge-container">
+                    <div className="gauge-outer">
+                      <div className="gauge-fill" style={{transform: 'rotate(45deg)'}}></div>
+                      <div className="gauge-inner">
+                        <span className="gauge-text">99.9% Uptime</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="server-console-log">
+                    <div className="console-line"><span className="term-green">[ OK ]</span> NGINX Service Operational</div>
+                    <div className="console-line"><span className="term-green">[ OK ]</span> SSL Certificate Valid (Expires in 290 Days)</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -60,7 +101,7 @@ const HostingServerManagement = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="section-heading">Professional Hosting & Server Management Solutions</h2>
+              <h2 className="section-heading">Professional Server Management</h2>
               <p>
                 In today's fast-paced digital world, having a robust and scalable solution is not just an option—it's a necessity. 
                 Our team provides cutting-edge digital services that empower your brand.
@@ -126,7 +167,7 @@ const HostingServerManagement = () => {
             {["Web Hosting","Cloud Hosting","VPS Server Setup","Dedicated Server Management","Domain Setup","SSL Installation","Server Optimization","Website Migration","Email Hosting","Backup & Recovery Solutions"].map((offer, index) => (
               <motion.div key={index} variants={fadeIn} className="offer-card glass-card">
                 <div className="offer-icon-wrapper">
-                  <Monitor size={24} />
+                  <Server size={24} />
                 </div>
                 <h3>{offer}</h3>
                 <p>Premium implementation of {offer.toLowerCase()} for your business growth.</p>

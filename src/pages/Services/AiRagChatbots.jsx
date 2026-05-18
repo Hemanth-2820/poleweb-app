@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Monitor, Code, Rocket, Shield, Settings } from 'lucide-react';
+import { ArrowRight, CheckCircle2, MessageSquareCode, Code, Rocket, Shield, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './AiRagChatbots.css';
 
@@ -30,22 +30,54 @@ const AiRagChatbots = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">AI & RAG Chatbots</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Intelligent Conversational AI</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">Deploying advanced AI agents that understand context and provide human-like interactions by leveraging your own business data.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">AI Chatbots & RAG</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">Intelligent AI Chatbot Systems</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">Accelerate customer success and automate knowledge retrievals with state-of-the-art Retrieval-Augmented Generation (RAG) chat systems trained exclusively on your business data.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium custom AI chat mockup */}
+              <div className="ai-chat-mockup glass-card">
+                <div className="mockup-header">
+                  <div className="dots"><span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span></div>
+                  <span className="window-title">poleweb.app/ai-chat</span>
+                </div>
+                <div className="mockup-body">
+                  <div className="chat-messages-container">
+                    <div className="msg user">
+                      <div className="msg-text">How do I connect the RAG database?</div>
+                    </div>
+                    <div className="msg bot">
+                      <div className="msg-avatar">AI</div>
+                      <div className="msg-text">Connecting to vector database... Found 3 matching documents. Generating response with GPT-4o...</div>
+                    </div>
+                  </div>
+                  <div className="chat-input-bar">
+                    <span className="chat-placeholder">Type message...</span>
+                    <div className="chat-send-btn"><ArrowRight size={14} /></div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -60,7 +92,7 @@ const AiRagChatbots = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="section-heading">Professional AI & RAG Chatbots Solutions</h2>
+              <h2 className="section-heading">Professional AI & RAG Solutions</h2>
               <p>
                 In today's fast-paced digital world, having a robust and scalable solution is not just an option—it's a necessity. 
                 Our team provides cutting-edge digital services that empower your brand.
@@ -123,10 +155,10 @@ const AiRagChatbots = () => {
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            {["AI Chatbot Development","RAG-Based Chatbots","Website Chatbots","WhatsApp Chatbots","Customer Support Bots","Automation Bots","AI-Based Response Systems"].map((offer, index) => (
+            {["Custom AI Chatbot Development","Retrieval-Augmented Generation (RAG)","Vector Database Integration","AI Knowledge Base Setup","Multilingual Chatbots","Voice Enabled Chatbots","Customer Support Automation"].map((offer, index) => (
               <motion.div key={index} variants={fadeIn} className="offer-card glass-card">
                 <div className="offer-icon-wrapper">
-                  <Monitor size={24} />
+                  <MessageSquareCode size={24} />
                 </div>
                 <h3>{offer}</h3>
                 <p>Premium implementation of {offer.toLowerCase()} for your business growth.</p>

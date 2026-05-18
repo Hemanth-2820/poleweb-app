@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Monitor, Code, Rocket, Shield, Settings } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldAlert, Code, Rocket, Shield, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './SecurityMaintenance.css';
 
@@ -30,22 +30,57 @@ const SecurityMaintenance = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">Security & Maintenance</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Shielded & Proactive</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">Protecting your digital investment with robust security protocols and proactive maintenance that ensures peak performance 24/7.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">Security & Auditing</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">Bulletproof Protection & Audits</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">Protect your business digital assets with continuous active threat monitoring, real-time intrusion countermeasures, and automated daily data backup procedures.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium custom cybersecurity firewall scanner mockup */}
+              <div className="security-scanner-mockup glass-card">
+                <div className="mockup-header">
+                  <div className="dots"><span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span></div>
+                  <span className="window-title">poleweb.app/threat-scanner</span>
+                </div>
+                <div className="mockup-body">
+                  <div className="scanner-radar-container">
+                    <div className="scanner-radar-circle">
+                      <div className="radar-beam"></div>
+                      <Shield size={36} className="radar-shield-icon" />
+                    </div>
+                  </div>
+                  <div className="security-status-grid">
+                    <div className="status-item">
+                      <span className="label">Intrusions Prevented</span>
+                      <span className="value term-green">412,980</span>
+                    </div>
+                    <div className="status-item">
+                      <span className="label">Active Threats</span>
+                      <span className="value">0 Detected</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -60,7 +95,7 @@ const SecurityMaintenance = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="section-heading">Professional Security & Maintenance Solutions</h2>
+              <h2 className="section-heading">Professional Security Solutions</h2>
               <p>
                 In today's fast-paced digital world, having a robust and scalable solution is not just an option—it's a necessity. 
                 Our team provides cutting-edge digital services that empower your brand.
@@ -123,10 +158,10 @@ const SecurityMaintenance = () => {
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            {["Website Maintenance","Performance Optimization","Bug Fixing","Website Security","Malware Protection","Backup Management","Technical Support","Server Security Monitoring"].map((offer, index) => (
+            {["Website Security Audit","Malware Detection & Removal","DDoS Protection Setup","Vulnerability Assessments","Firewall Configuration","SSL Management","Data Encryptions","Security Compliance Tools"].map((offer, index) => (
               <motion.div key={index} variants={fadeIn} className="offer-card glass-card">
                 <div className="offer-icon-wrapper">
-                  <Monitor size={24} />
+                  <ShieldAlert size={24} />
                 </div>
                 <h3>{offer}</h3>
                 <p>Premium implementation of {offer.toLowerCase()} for your business growth.</p>

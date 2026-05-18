@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Monitor, Code, Rocket, Shield, Settings } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Smartphone, Code, Rocket, Shield, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './AppDevelopment.css';
 
@@ -30,22 +30,59 @@ const AppDevelopment = () => {
           <div className="glow-circle glow-1"></div>
         </div>
         <div className="container">
-          <motion.div 
-            className="service-hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
-            <motion.h1 variants={fadeIn} className="massive-heading">App Development</motion.h1>
-            <motion.h3 variants={fadeIn} className="hero-subtitle">Mobile & Multi-Platform</motion.h3>
-            <motion.p variants={fadeIn} className="hero-desc">Intuitive mobile experiences for Android and iOS. We craft apps that are fast, reliable, and designed to engage your users effectively.</motion.p>
-            <motion.div variants={fadeIn} className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                Start Your Project <ArrowRight size={18} />
-              </Link>
+          <div className="hero-split-grid">
+            <motion.div 
+              className="service-hero-content"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeIn} className="pill">PREMIUM SERVICE</motion.div>
+              <motion.h1 variants={fadeIn} className="massive-heading">App Development</motion.h1>
+              <motion.h3 variants={fadeIn} className="hero-subtitle">Mobile & Desktop Apps</motion.h3>
+              <motion.p variants={fadeIn} className="hero-desc">Create powerful, custom iOS and Android applications with stunning interfaces and robust, scalable backend architectures built for global consumer engagement.</motion.p>
+              <motion.div variants={fadeIn} className="hero-cta-group">
+                <Link to="/contact" className="btn-primary">
+                  Start Your Project <ArrowRight size={18} />
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div 
+              className="hero-visual-container"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Premium custom iOS/Android app UI simulator */}
+              <div className="app-phone-simulator glass-card">
+                <div className="simulator-notch"></div>
+                <div className="simulator-screen">
+                  <div className="sim-header">
+                    <div className="sim-avatar"></div>
+                    <div className="sim-welcome">
+                      <span className="welcome-tag">Developer Console</span>
+                      <span className="user-name">poleweb.app</span>
+                    </div>
+                  </div>
+                  <div className="sim-card-scroll">
+                    <div className="sim-metric-card">
+                      <span className="metric-label">Active Users</span>
+                      <span className="metric-val">124.5k</span>
+                      <div className="mini-progress-bar"><div className="bar-fill" style={{width: '78%'}}></div></div>
+                    </div>
+                    <div className="sim-chart-card">
+                      <span className="metric-label">App Store Downloads</span>
+                      <svg viewBox="0 0 100 40" className="sim-chart">
+                        <path d="M0 40 L20 20 L40 30 L60 10 L80 25 L100 5" fill="none" stroke="#d0f601" strokeWidth="2" />
+                      </svg>
+                    </div>
+                    <div className="sim-action-btn">Launch Application</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -60,7 +97,7 @@ const AppDevelopment = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="section-heading">Professional App Development Solutions</h2>
+              <h2 className="section-heading">Professional Mobile Solutions</h2>
               <p>
                 In today's fast-paced digital world, having a robust and scalable solution is not just an option—it's a necessity. 
                 Our team provides cutting-edge digital services that empower your brand.
@@ -126,7 +163,7 @@ const AppDevelopment = () => {
             {["Android App Development","Cross Platform Apps","Business Applications","E-Commerce Apps","Custom Mobile Apps","API-Based Mobile Apps"].map((offer, index) => (
               <motion.div key={index} variants={fadeIn} className="offer-card glass-card">
                 <div className="offer-icon-wrapper">
-                  <Monitor size={24} />
+                  <Smartphone size={24} />
                 </div>
                 <h3>{offer}</h3>
                 <p>Premium implementation of {offer.toLowerCase()} for your business growth.</p>
