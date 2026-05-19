@@ -1,66 +1,95 @@
 import React from 'react';
 import './BrandsMarquee.css';
 
-const techRow1 = [
-  { name: 'Figma', icon: '🎨' }, { name: 'JavaScript', icon: '🟨' }, { name: 'TypeScript', icon: '🔷' }, 
-  { name: 'HTML5', icon: '🟧' }, { name: 'CSS3', icon: '💙' }, { name: 'React', icon: '⚛️' }, 
-  { name: 'Redux', icon: '🔮' }, { name: 'Next.js', icon: '◼' }, { name: 'Vue.js', icon: '💚' }
+const technologies = [
+  { name: 'Figma',        icon: '🎨' },
+  { name: 'JavaScript',   icon: '🟨' },
+  { name: 'TypeScript',   icon: '🔷' },
+  { name: 'HTML5',        icon: '🟧' },
+  { name: 'CSS3',         icon: '💙' },
+  { name: 'React',        icon: '⚛️' },
+  { name: 'Redux',        icon: '🔮' },
+  { name: 'Next.js',      icon: '◼' },
+  { name: 'jQuery',       icon: '🔵' },
+  { name: 'Vue.js',       icon: '💚' },
+  { name: 'Node.js',      icon: '🟢' },
+  { name: 'Express.js',   icon: '🖤' },
+  { name: 'Prisma ORM',   icon: '▲'  },
+  { name: 'MongoDB',      icon: '🍃' },
+  { name: 'Firebase',     icon: '🔥' },
+  { name: 'Redis',        icon: '🔴' },
+  { name: 'GraphQL',      icon: '⬡'  },
+  { name: 'PostgreSQL',   icon: '🐘' },
+  { name: 'Nginx',        icon: '🌐' },
+  { name: 'MySQL',        icon: '🐬' },
+  { name: 'Linux',        icon: '🐧' },
+  { name: 'Git',          icon: '🔶' },
+  { name: 'GitHub',       icon: '🐙' },
+  { name: 'Docker',       icon: '🐳' },
+  { name: 'AWS',          icon: '☁️' },
+  { name: 'WordPress',    icon: '🔵' },
+  { name: 'Shopify',      icon: '🛍️' },
+  { name: 'Tailwind CSS', icon: '🌊' },
+  { name: 'Flutter',      icon: '💙' },
+  { name: 'GitHub Actions', icon: '⚙️' }
 ];
-
-const techRow2 = [
-  { name: 'Node.js', icon: '🟢' }, { name: 'Express.js', icon: '🖤' }, { name: 'Prisma ORM', icon: '▲' }, 
-  { name: 'MongoDB', icon: '🍃' }, { name: 'Firebase', icon: '🔥' }, { name: 'Redis', icon: '🔴' }, 
-  { name: 'GraphQL', icon: '⬡' }, { name: 'jQuery', icon: '🔵' }
-];
-
-const techRow3 = [
-  { name: 'Linux', icon: '🐧' }, { name: 'Git', icon: '🔶' }, { name: 'GitHub', icon: '🐙' }, 
-  { name: 'Docker', icon: '🐳' }, { name: 'AWS', icon: '☁️' }, { name: 'WordPress', icon: '🔵' }, 
-  { name: 'PostgreSQL', icon: '🐘' }
-];
-
-const techRow4 = [
-  { name: 'Shopify', icon: '🛍️' }, { name: 'Tailwind CSS', icon: '🌊' }, { name: 'Flutter', icon: '💙' }, 
-  { name: 'GitHub Actions', icon: '⚙️' }, { name: 'Nginx', icon: '🌐' }, { name: 'MySQL', icon: '🐬' },
-  { name: 'Vite', icon: '⚡' }
-];
-
-const MarqueeRow = ({ items, direction }) => {
-  return (
-    <div className="marquee-wrapper">
-      <div className={`marquee-track ${direction === 'right' ? 'marquee-reverse' : ''}`}>
-        {[1, 2, 3, 4].map((setIndex) => (
-          <div className="marquee-set" key={setIndex}>
-            {items.map((tech, idx) => (
-              <div className="tech-pill" key={`${setIndex}-${idx}`}>
-                <span className="tech-emoji">{tech.icon}</span>
-                <span className="tech-name">{tech.name}</span>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
 
 const BrandsMarquee = () => {
+  // Triple the array to ensure seamless infinite looping with no gaps on wide monitors
+  const marqueeItems = [...technologies, ...technologies, ...technologies];
+
+  const features = [
+    { text: 'Building high-performance web apps using 30+ modern technologies' },
+    { text: 'Guaranteed clean, robust & scalable code architecture for every platform' },
+    { text: 'Seamless API integrations, cloud deployments & custom software solutions' }
+  ];
+
   return (
-    <section className="tech-section">
-      <div className="tech-header">
-        <h2 className="tech-title">
-          Our Technology <span className="tech-title-serif">Stack.</span>
-        </h2>
-        <p className="tech-subtitle">
-          We use a modern, high-performance tech stack designed to build scalable digital products and automate business workflows.
-        </p>
+    <section className="arounda-marquee-section">
+      {/* 1. Scrolling Marquee Row */}
+      <div className="marquee-container">
+        <div className="marquee-track">
+          {marqueeItems.map((item, idx) => (
+            <div className="marquee-logo-item" key={idx}>
+              <div className="tech-marquee-item">
+                <span className="tech-marquee-icon">{item.icon}</span>
+                <span className="tech-marquee-name">{item.name}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="marquee-stack">
-        <MarqueeRow items={techRow1} direction="left" />
-        <MarqueeRow items={techRow2} direction="right" />
-        <MarqueeRow items={techRow3} direction="left" />
-        <MarqueeRow items={techRow4} direction="right" />
+      {/* 2. PoleWeb Information Block (Exactly matches the uploaded design layout) */}
+      <div className="tech-info-section container">
+        {/* Background Radial Glow */}
+        <div className="tech-info-radial-glow"></div>
+
+        <div className="tech-info-inner">
+          {/* Left Column: holds the vertically rotated RESULTS badge */}
+          <div className="tech-info-badge-col">
+            <div className="tech-info-badge-wrapper">
+              <span className="tech-info-badge">RESULTS</span>
+            </div>
+          </div>
+
+          {/* Right Column: holds the heading and list, perfectly aligned */}
+          <div className="tech-info-content">
+            <h2 className="tech-info-title">
+              <span className="serif-italic-title">PoleWeb</span> is your perfect choice <br className="desktop-break" />
+              in terms of
+            </h2>
+
+            <div className="tech-info-list">
+              {features.map((feature, idx) => (
+                <div className="tech-info-item" key={idx}>
+                  <span className="tech-info-bullet">{'{/}'}</span>
+                  <span className="tech-info-text">{feature.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
