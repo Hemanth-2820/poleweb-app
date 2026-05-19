@@ -1,244 +1,290 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import './Services.css';
-import {
-  Code, Layout, Cloud, Server, Megaphone, Smartphone,
-  Phone, Layers, ShoppingBag, Shield, ArrowUpRight
-} from 'lucide-react';
 
-const services = [
+const serviceGroups = [
   {
-    icon: Code,
-    title: 'Web Development',
-    short: 'Websites & Web Apps',
-    desc: 'We build fast, modern websites and web applications — from simple business sites to complex custom platforms. Every project is designed for performance, mobile-first, and built to convert visitors into customers.',
-    list: ['Business & Company Websites', 'E-Commerce Stores', 'Custom Web Applications', 'Admin Dashboards & Portals', 'SaaS Platform Development', 'Landing Pages & Sales Funnels']
+    title: 'Development & AI',
+    services: [
+      {
+        name: 'Web Development',
+        tagline: 'High-performance websites tailored to scale your brand and capture conversions.',
+        detailedParagraph: 'At Pole Web, our Web Development services deliver highly optimized, lightning-fast digital solutions built to drive organic traffic and convert visitors into high-value customers. Leveraging modern architectures like React, Next.js, and clean Tailwind CSS, we craft bespoke corporate sites, complex enterprise SaaS platforms, responsive interfaces, and interactive dashboards that stand the test of performance and scale. We focus on semantic HTML structure, flawless search engine readiness, and fluid micro-animations that represent your company engineering standard.',
+        subServices: [
+          'Business Websites',
+          'Company Websites',
+          'Portfolio Websites',
+          'Landing Pages',
+          'E-Commerce Websites',
+          'Custom Web Applications',
+          'Admin Dashboards',
+          'SaaS Platforms',
+          'Responsive Website Design',
+          'Website Redesign'
+        ]
+      },
+      {
+        name: 'Software Development',
+        tagline: 'Custom enterprise software systems to automate operations and workflows.',
+        detailedParagraph: 'Pole Web builds scalable, modular enterprise software solutions designed to automate complex processes, eliminate manual bottlenecks, and secure critical data assets. Our systems span high-performance inventory tracking, advanced multi-tenant SaaS dashboards, billing portals, and customized workflow automation. By employing strong backend databases, real-time sync, and offline-first capabilities, we construct durable software assets that grow alongside your organizational scale.',
+        subServices: [
+          'Custom Software Development',
+          'Billing Software',
+          'Inventory Management Systems',
+          'Management Systems',
+          'Automation Software',
+          'Desktop Applications'
+        ]
+      },
+      {
+        name: 'AI & Chatbot Services',
+        tagline: 'Intelligent conversational AI bots and customer service automated workflows.',
+        detailedParagraph: 'Empower your customer journeys and streamline operational response speeds using Pole Webs conversational AI and intelligent chatbot systems. We design RAG-based search chatbots, automated customer assistance integrations, and custom WhatsApp/SMS agents that process user intents and answer complex queries with brand-accurate, context-aware intelligence. Automate your support desk, schedule appointments, and capture lead parameters 24/7 with zero latency.',
+        subServices: [
+          'AI Chatbot Development',
+          'RAG-Based Chatbots',
+          'Website Chatbots',
+          'WhatsApp Chatbots',
+          'Customer Support Bots',
+          'Automation Bots',
+          'AI-Based Response Systems'
+        ]
+      }
+    ]
   },
   {
-    icon: Layout,
-    title: 'Software Development',
-    short: 'Custom Business Software',
-    desc: 'Off-the-shelf software often does not fit how you work. We build custom software that matches your exact workflow — whether it is billing, inventory, HR, or any internal business process.',
-    list: ['Custom Business Software', 'Billing & Invoice Systems', 'Inventory Management', 'CRM & ERP Systems', 'Process Automation Tools', 'Desktop Applications']
+    title: 'Cloud & Infrastructure',
+    services: [
+      {
+        name: 'AWS & DevOps Services',
+        tagline: 'Continuous delivery setups, cloud configurations, and auto-scaling setups.',
+        detailedParagraph: 'Pole Web provides elite DevOps solutions and scalable AWS configurations to ensure your digital ecosystem operates with 99.99% uptime and bulletproof security. We configure multi-zone load balancing, highly scalable containerized environments using Docker & Kubernetes, secure continuous integration pipelines (CI/CD), infrastructure automation scripts, and real-time monitoring and logging aggregates. Deploy code seamlessly and scale traffic effortlessly.',
+        subServices: [
+          'AWS Cloud Setup',
+          'DevOps Solutions',
+          'CI/CD Pipeline Setup',
+          'Docker Configuration',
+          'Kubernetes Setup',
+          'Server Deployment',
+          'Infrastructure Automation',
+          'Monitoring & Logging',
+          'Cloud Architecture Setup'
+        ]
+      },
+      {
+        name: 'Hosting & Server Services',
+        tagline: 'Secure VPS management, website migrations, and dedicated database monitoring.',
+        detailedParagraph: 'Experience maximum performance, security, and stability with our comprehensive server hosting and infrastructure management. From high-availability VPS set ups and dedicated server migrations to automated backup and disaster recovery schedules, Pole Web controls your server environments with maximum precision. We handle SSL generation, domain setup, reverse proxies, caching optimizations, and custom email setups to give you total digital peace of mind.',
+        subServices: [
+          'Web Hosting',
+          'Cloud Hosting',
+          'VPS Server Setup',
+          'Dedicated Server Management',
+          'Domain Setup',
+          'SSL Installation',
+          'Server Optimization',
+          'Website Migration',
+          'Email Hosting',
+          'Backup & Recovery Solutions'
+        ]
+      },
+      {
+        name: 'Security & Maintenance',
+        tagline: 'Malware mitigation, ongoing server health audits, and fast patch updates.',
+        detailedParagraph: 'Protect your digital investments and guarantee operational continuity with our proactive maintenance and advanced security suite. We provide routine performance audits, instant bug resolutions, 24/7 real-time malware monitoring, secure server configurations, and database backup routines. Pole Web secures your web properties against DDoS attacks, data leaks, and script injections, keeping your applications online and fully optimized.',
+        subServices: [
+          'Website Maintenance',
+          'Performance Optimization',
+          'Bug Fixing',
+          'Website Security',
+          'Malware Protection',
+          'Backup Management',
+          'Technical Support',
+          'Server Security Monitoring'
+        ]
+      }
+    ]
   },
   {
-    icon: Cloud,
-    title: 'AWS & DevOps',
-    short: 'Cloud Infrastructure',
-    desc: 'We set up and manage cloud infrastructure on AWS — from initial configuration to automated deployment pipelines. Your application stays online, scales automatically, and runs efficiently.',
-    list: ['AWS Cloud Architecture', 'CI/CD Pipelines Setup', 'Docker & Kubernetes', 'Infrastructure Automation', 'Cost Optimization', 'Monitoring & Alerts']
-  },
-  {
-    icon: Server,
-    title: 'Hosting & Servers',
-    short: 'Hosting & Server Management',
-    desc: 'We manage your servers so you do not have to. Setup, optimization, security hardening, and ongoing maintenance — your infrastructure stays fast, secure, and available 24/7.',
-    list: ['Web Hosting & Domain Setup', 'VPS & Dedicated Servers', 'SSL Certificates', 'Server Optimization', 'Website Migration', 'Email Hosting & Backup']
-  },
-  {
-    icon: Megaphone,
-    title: 'Digital Marketing',
-    short: 'Growth & Marketing',
-    desc: 'Great products need to be found. We run targeted marketing campaigns across Google, Meta, and social channels — driving quality traffic and measurable leads for your business.',
-    list: ['SEO & Content Strategy', 'Google & Meta Ads', 'Social Media Management', 'Lead Generation Campaigns', 'Performance Marketing', 'Email Marketing']
-  },
-  {
-    icon: Smartphone,
-    title: 'AI & Chatbots',
-    short: 'AI Automation',
-    desc: 'We build AI-powered chatbots and automation systems that handle customer queries, qualify leads, and streamline internal workflows — saving your team hours every single day.',
-    list: ['AI Chatbot Development', 'RAG-Based Knowledge Bots', 'WhatsApp Automation Bots', 'Lead Qualification Bots', 'Customer Support Automation', 'Internal Workflow Bots']
-  },
-  {
-    icon: Phone,
-    title: 'IVR Solutions',
-    short: 'Voice & Call Systems',
-    desc: 'Automate your inbound calls with intelligent IVR systems. Route callers, collect information, and resolve common queries automatically — without requiring a live agent every time.',
-    list: ['IVR System Setup', 'Automated Call Routing', 'Customer Support IVR', 'Cloud-Based IVR', 'Multi-Level Menu Systems', 'CRM Integration']
-  },
-  {
-    icon: Layers,
-    title: 'API & Integrations',
-    short: 'System Integrations',
-    desc: 'We connect your apps, tools, and platforms with secure API integrations — enabling seamless data flow between your systems and eliminating manual data entry or sync issues.',
-    list: ['Third-Party API Integration', 'Payment Gateway Setup', 'WhatsApp & SMS API', 'CRM Integrations', 'Webhook Automation', 'Multi-System Sync']
-  },
-  {
-    icon: ShoppingBag,
-    title: 'E-Commerce',
-    short: 'Online Stores',
-    desc: 'We build scalable online stores with smooth shopping experiences, secure payment systems, and easy product management — whether you are launching or scaling your store.',
-    list: ['Custom Online Store Development', 'Shopify & WooCommerce', 'Multi-Vendor Marketplaces', 'Order & Inventory Management', 'Payment Gateway Integration', 'Store Optimization']
-  },
-  {
-    icon: Shield,
-    title: 'Security & Maintenance',
-    short: 'Ongoing Protection',
-    desc: 'Websites and apps need regular care to stay fast and secure. We provide ongoing maintenance, security monitoring, performance optimization, and emergency bug fixes when needed.',
-    list: ['Monthly Website Maintenance', 'Security Audits & Hardening', 'Performance Optimization', 'Malware Removal & Protection', 'Backup Management', 'Technical Support']
+    title: 'Business & Integrations',
+    services: [
+      {
+        name: 'Digital Marketing Services',
+        tagline: 'Increase your ROI with search engine optimization, Google Ads, and marketing plans.',
+        detailedParagraph: 'Scale your companys digital footprint and maximize ROI using Pole Webs data-driven growth strategies. We coordinate highly optimized search engine campaigns (SEO), laser-focused Google & Meta Ads, targeted lead generation funnels, and data-driven marketing templates. Our solutions track key customer parameters, optimize campaign conversions, and lower your customer acquisition cost while maximizing organic reach.',
+        subServices: [
+          'SEO Optimization',
+          'Social Media Marketing',
+          'Google Ads',
+          'Meta Ads',
+          'Lead Generation',
+          'Performance Marketing',
+          'Email Marketing',
+          'Content Marketing'
+        ]
+      },
+      {
+        name: 'IVR Services',
+        tagline: 'Interactive call systems and automated routing setups for call management.',
+        detailedParagraph: 'Re-engineer your business communication networks using Pole Webs advanced interactive voice response (IVR) platforms. We customize cloud-hosted multi-level routing, automated speech and DTMF recognition, call queue parameters, and unified customer support pipelines. Seamlessly connect callers with appropriate agents, handle large voice traffic volumes, and deliver immediate professional responses without expensive physical infrastructure.',
+        subServices: [
+          'IVR Setup',
+          'Automated Voice Response Systems',
+          'Business Call Management',
+          'Customer Support IVR',
+          'Cloud IVR Solutions',
+          'Multi-Level IVR Systems'
+        ]
+      },
+      {
+        name: 'API & Integration Services',
+        tagline: 'Custom payment gateways, WhatsApp webhooks, and secure API links.',
+        detailedParagraph: 'Connect your digital ecosystem seamlessly with our third-party API integration and operational automation services. Pole Web bridges data gaps between payment gateways, customer relationship portals, custom ERP tools, and instant notification endpoints (such as WhatsApp, SMS, and email setups). Eliminate manual duplication, streamline automated records, and orchestrate perfect data synchronization across all channels.',
+        subServices: [
+          'Third-Party API Integration',
+          'Payment Gateway Integration',
+          'WhatsApp API Integration',
+          'SMS & Email API Setup',
+          'Automation Integrations'
+        ]
+      }
+    ]
   }
 ];
 
 const Services = () => {
-  const [active, setActive] = useState(null);
-  const [animating, setAnimating] = useState(false);
-  const [showAsteroid, setShowAsteroid] = useState(false);
-  const [showShatter, setShowShatter] = useState(false);
-  const [displayedService, setDisplayedService] = useState(null);
-  const panelRef = useRef(null);
-
-  // 12 shards — fall DOWNWARD with slight sideways drift
-  const shards = [
-    { top: '10%', left: '5%',  tx: '-30px',  ty: '280px', rot: '-50deg',  size: 38, delay: '0ms'  },
-    { top: '8%',  left: '30%', tx: '10px',   ty: '310px', rot: '30deg',   size: 28, delay: '15ms' },
-    { top: '12%', left: '60%', tx: '35px',   ty: '290px', rot: '70deg',   size: 42, delay: '5ms'  },
-    { top: '12%', left: '85%', tx: '40px',   ty: '270px', rot: '-40deg',  size: 30, delay: '20ms' },
-    { top: '35%', left: '0%',  tx: '-40px',  ty: '240px', rot: '-80deg',  size: 36, delay: '8ms'  },
-    { top: '38%', left: '88%', tx: '45px',   ty: '220px', rot: '55deg',   size: 32, delay: '25ms' },
-    { top: '55%', left: '10%', tx: '-25px',  ty: '200px', rot: '-35deg',  size: 44, delay: '12ms' },
-    { top: '50%', left: '40%', tx: '15px',   ty: '230px', rot: '20deg',   size: 26, delay: '30ms' },
-    { top: '52%', left: '70%', tx: '38px',   ty: '210px', rot: '75deg',   size: 38, delay: '3ms'  },
-    { top: '70%', left: '20%', tx: '-20px',  ty: '170px', rot: '-60deg',  size: 22, delay: '18ms' },
-    { top: '68%', left: '55%', tx: '25px',   ty: '180px', rot: '-25deg',  size: 34, delay: '10ms' },
-    { top: '72%', left: '80%', tx: '42px',   ty: '160px', rot: '90deg',   size: 28, delay: '22ms' },
-  ];
-
-  const handleServiceClick = (index) => {
-    if (animating) return;
-    setAnimating(true);
-
-    // Step 1: Star flies in (0.5 second)
-    setShowAsteroid(true);
-
-    // Step 2: At 0.5s — star hits bottom-right → shatter
-    setTimeout(() => {
-      setShowAsteroid(false);
-      setActive(index);
-      setShowShatter(true);
-    }, 500);
-
-    // Step 3: At ~1.06s — shards done falling, show new content
-    setTimeout(() => {
-      setShowShatter(false);
-      setDisplayedService(index);
-      setAnimating(false);
-    }, 1060);
-  };
-
-  const currentService = displayedService !== null ? services[displayedService] : null;
+  const [selectedService, setSelectedService] = useState(null);
 
   return (
-    <section className="services-section" id="services">
-      <div className="container">
-        {/* Section Header */}
-        <div className="services-header">
-          <span className="services-eyebrow">What We Do</span>
-          <h2 className="services-main-title">
-            Technology Services<br />
-            <span className="services-title-accent">Built for Real Business</span>
-          </h2>
-          <p className="services-main-subtitle">
-            From your first website to full cloud infrastructure — everything your business needs to build, grow, and scale digitally.
-          </p>
+    <section className="arounda-services-section" id="services">
+      <div className="services-radial-glow"></div>
+      <div className="container services-container">
+        {/* Rotated Vertical Badge */}
+        <div className="vertical-badge-wrapper">
+          <span className="vertical-badge">SERVICES</span>
         </div>
 
-        {/* Main Layout */}
-        <div className="services-split">
+        {/* Header Title */}
+        <div className="services-header">
+          <h2 className="services-title">
+            Digital Product Design & Development <br />
+            <span className="serif-italic-title">Services We Offer</span>
+          </h2>
+        </div>
 
-          {/* LEFT — Grid of service cards */}
-          <div className="services-grid-left">
-            {services.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <button
-                  key={i}
-                  className={`srv-grid-item ${active === i ? 'active' : ''}`}
-                  onClick={() => handleServiceClick(i)}
-                  id={`service-card-${i}`}
-                >
-                  <div className="srv-grid-icon">
-                    <Icon size={20} />
-                  </div>
-                  <span className="srv-grid-title">{s.title}</span>
-                  <ArrowUpRight size={14} className="srv-grid-arrow" />
-                </button>
-              );
-            })}
+        {/* High-Contrast Large Rounded Card (Restored original layout!) */}
+        <div className="services-catalog-card">
+          <div className="services-grid-columns">
+            {serviceGroups.map((group, colIdx) => (
+              <div key={colIdx} className="service-vertical-col">
+                <h3 className="vertical-title">{group.title}</h3>
+                <div className="vertical-links-list">
+                  {group.services.map((srv, idx) => (
+                    <div key={idx} className="service-item-wrapper">
+                      {/* Active Row item link - Triggers Modal on click */}
+                      <div className="service-item-link" onClick={() => setSelectedService(srv)}>
+                        <span className="service-name">{srv.name}</span>
+                        <div className="item-arrow-circle">
+                          <ArrowUpRight size={14} className="arrow-icon" />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* RIGHT — Panel */}
-          <div className="services-panel-wrapper">
-            {/* Asteroid */}
-            {showAsteroid && (
-              <div className="asteroid">
-                <div className="asteroid-body" />
-                <div className="asteroid-fire" />
-                <div className="asteroid-trail" />
+          {/* Bottom Consultation CTA Banner */}
+          <div className="services-cta-banner">
+            <div className="cta-left-profile">
+              <div className="profile-avatar-circle">
+                <span className="avatar-initials">PW</span>
+                <div className="avatar-active-dot"></div>
               </div>
-            )}
+              <div className="profile-details">
+                <span className="profile-name">PoleWeb Team</span>
+                <span className="profile-role">Lead Developers</span>
+                <p className="profile-message">
+                  Grow revenue and maximize ROI with our product design and development services.
+                </p>
+              </div>
+            </div>
 
-            <div className={`services-panel ${showShatter ? 'panel-shatter' : ''}`} ref={panelRef}>
-              <span className="panel-corner c-tl"></span>
-              <span className="panel-corner c-tr"></span>
-              <span className="panel-corner c-bl"></span>
-              <span className="panel-corner c-br"></span>
-              {/* Shatter shards */}
-              {showShatter && shards.map((s, i) => (
-                <div
-                  key={i}
-                  className="shard"
-                  style={{
-                    top: s.top,
-                    left: s.left,
-                    width: `${s.size}px`,
-                    height: `${s.size}px`,
-                    '--tx': s.tx,
-                    '--ty': s.ty,
-                    '--rot': s.rot,
-                    animationDelay: s.delay
-                  }}
-                />
-              ))}
-              {currentService === null ? (
-                /* Default State — Pole Web Brand */
-                <div className="panel-default">
-                  <div className="panel-brand-logo">
-                    <span className="brand-pole">pole</span>
-                    <span className="brand-web">web</span>
-                  </div>
-                  <h3 className="panel-default-title">Complete Digital Solutions</h3>
-                  <p className="panel-default-desc">
-                    Pole Web is a full-stack digital agency built for modern businesses. We design, build, and scale digital products — from websites and software to cloud infrastructure and AI automation.
-                  </p>
-                  <p className="panel-default-hint">
-                    ← Select a service to explore what we offer
-                  </p>
+            <div className="cta-right-button">
+              <a href="/contact" className="services-lime-cta">
+                <span className="cta-txt">Book a Call</span>
+                <div className="cta-arrow-circle">
+                  <ArrowUpRight size={18} color="#000" strokeWidth={2.5} />
                 </div>
-              ) : (
-                /* Service Detail */
-                <div className="panel-detail">
-                  <div className="panel-icon-wrapper">
-                    {React.createElement(services[displayedService].icon, { size: 26 })}
-                  </div>
-                  <h3 className="panel-title">{currentService.title}</h3>
-                  <p className="panel-desc">{currentService.desc}</p>
-                  <ul className="panel-list">
-                    {currentService.list.map((item, i) => (
-                      <li key={i} className="panel-list-item">
-                        <span className="panel-dot" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <button className="panel-cta">
-                    Get a Free Quote <ArrowUpRight size={18} />
-                  </button>
-                </div>
-              )}
+              </a>
             </div>
           </div>
-
         </div>
       </div>
+
+      {/* Dynamic Large Split-Pane Center Modal Popup */}
+      {selectedService && (
+        <div className="services-modal-backdrop" onClick={() => setSelectedService(null)}>
+          <div className="services-modal-content split-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close-btn" onClick={() => setSelectedService(null)}>
+              &times;
+            </button>
+            
+            {/* Left Creative Brand Column */}
+            <div className="modal-left-brand-panel">
+              <div className="brand-glow-circle"></div>
+              <div className="brand-panel-content">
+                <div className="brand-badge">Pole Web Elite</div>
+                <h4 className="brand-quote">
+                  Architecting <br />
+                  <span className="lime-quote-text">Future-Ready</span> <br />
+                  Digital Platforms.
+                </h4>
+                <p className="brand-panel-subtext">
+                  Enterprise-grade performance, custom-engineered for rapid business growth and bulletproof security.
+                </p>
+                <div className="brand-decor-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Information Column */}
+            <div className="modal-right-content-panel">
+              <div className="modal-header-row">
+                <div className="modal-badge-row">
+                  <span className="modal-category-badge">Engineering Capabilities</span>
+                </div>
+                <h3 className="modal-service-title">{selectedService.name}</h3>
+              </div>
+              
+              <p className="modal-service-description">
+                {selectedService.detailedParagraph}
+              </p>
+
+              <div className="modal-capabilities-section">
+                <h4 className="modal-subtitle">Detailed Technical Capabilities:</h4>
+                <div className="modal-capabilities-grid">
+                  {selectedService.subServices.map((sub, sIdx) => (
+                    <div key={sIdx} className="modal-cap-item">
+                      <span className="modal-cap-bullet">•</span>
+                      <span className="modal-cap-name">{sub}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="modal-footer-row">
+                <a href="/contact" className="modal-cta-button" onClick={() => setSelectedService(null)}>
+                  <span>Connect With Our Architects</span>
+                  <ArrowUpRight size={16} style={{ marginLeft: '8px' }} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

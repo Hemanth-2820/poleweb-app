@@ -1,145 +1,523 @@
-/* ========== ADVANTAGES SECTION BADGE LAYOUT ========== */
-.advantages-section {
-  background-color: #05050A;
-  padding: 120px 0;
+/* Results & Metrics Section Stylesheet - Lime Green & Indigo/Blue Aura */
+
+.arounda-results-section {
   position: relative;
+  width: 100%;
+  /* Elegant, deep blacky-blue midnight mesh gradient backdrop */
+  background: radial-gradient(circle at 85% 30%, rgba(13, 20, 68, 0.3) 0%, rgba(3, 3, 3, 0) 70%), 
+              #030303;
+  padding: 0px 0 50px 0; /* Reduced top padding from 140px to 90px */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
 }
 
-.advantages-header {
-  text-align: center;
-  margin-bottom: 80px;
-}
-
-.advantages-eyebrow {
-  display: inline-block;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #7a7a8a;
-  margin-bottom: 16px;
-}
-
-.advantages-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -1.5px;
-}
-
-.advantages-title-accent {
-  color: #d0f601;
-}
-
-/* Badges Grid */
-.advantages-badges-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  row-gap: 60px;
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
-.adv-badge-container {
-  display: flex;
-  justify-content: center;
-}
-
-.adv-badge-circle {
-  width: 260px;
-  height: 260px;
+.advantages-radial-glow {
+  position: absolute;
+  bottom: -200px;
+  right: -100px;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(13, 20, 68, 0.25) 0%, rgba(3, 3, 3, 0) 70%); /* Luminous blacky-blue glow */
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.15); /* increased visibility */
+  filter: blur(130px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.results-container {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+/* Rotated Vertical Badge */
+.vertical-badge-wrapper {
+  position: absolute;
+  left: -40px; /* Floated in the left container margin to prevent shifting */
+  top: 10px;
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: left top;
+  pointer-events: none;
+}
+
+.vertical-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #bdfa5a; /* Reverted to original green */
+  opacity: 0.95;
+  padding: 4px 12px;
+  border-left: 3px solid #bdfa5a; /* Reverted to original green */
+}
+
+/* Section Header */
+.results-header {
+  padding-left: 40px; /* Centered, aligned with container left edge */
+  margin-bottom: 55px; /* Reduced from 80px to 55px */
+}
+
+.results-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.serif-italic-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 54px;
+  color: #bdfa5a; /* Reverted to original green */
+}
+
+/* Metrics Columns Grid - Clean, borderless columns with wider 75px gaps, perfectly centered */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 75px; /* Increased from 50px to 75px */
+  padding-left: 2px; /* Centered, aligned with container left edge */
+  margin-bottom: 90px;
+}
+
+/* Base Metric Column (No card boxes, borderless, backgroundless!) */
+.metric-column {
+  position: relative;
   display: flex;
   flex-direction: column;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  min-height: auto;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metric-eyebrow {
+  font-family: 'Outfit', sans-serif; /* Clean, modern developer font family */
+  font-size: 23px; /* Increased size from 20px */
+  font-weight: 500; /* Sleek medium weight initially */
+  color: rgba(255, 255, 255, 0.6); /* Translucent white by default */
+  text-transform: none; /* Standard title case matches your image */
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metric-column:hover .metric-eyebrow {
+  color: #ffffff; /* Brightens up perfectly */
+  text-shadow: 0.5px 0 0 #ffffff, -0.5px 0 0 #ffffff; /* Clean simulated bold with zero layout shifts! */
+}
+
+/* Massive, clean, regular-weight numbers exactly like your design */
+.metric-value {
+  font-family: 'Inter', sans-serif; /* Clean, modern developer font family */
+  font-size: 130px; /* Scaled up from 105px to a majestic 130px */
+  font-weight: 300; /* Sophisticated light weight initially! */
+  line-height: 0.95;
+  color: rgba(255, 255, 255, 0.65); /* Dimmed white by default */
+  letter-spacing: -0.04em;
+  margin-bottom: 22px;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metric-column:hover .metric-value {
+  color: #ffffff; /* Bright white on hover */
+  text-shadow: 0.8px 0 0 #ffffff, -0.8px 0 0 #ffffff, 0 0.8px 0 #ffffff, 0 -0.8px 0 #ffffff; /* Simulated bolding with 0 layout shift! */
+}
+
+.metric-desc {
+  font-family: 'Inter', sans-serif; /* Clean, modern developer font family */
+  font-size: 17.5px; /* Increased size from 16px */
+  font-weight: 300; /* Kept geometrically constant to prevent layout jumping */
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.45); /* Elegant soft dim grey description */
+  margin-bottom: 0;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metric-column:hover .metric-desc {
+  color: rgba(255, 255, 255, 0.95); /* Brightens cleanly */
+  text-shadow: 0.3px 0 0 rgba(255, 255, 255, 0.9), -0.3px 0 0 rgba(255, 255, 255, 0.9); /* Clean simulated bold! */
+}
+
+/* --- Card 1 Elements (Stickers) --- */
+.floating-stickers {
+  position: relative;
+  margin-bottom: 28px; /* Gap before large values */
+  height: 95px;
+  width: 300px; /* Expanded for elegant wave spacing */
+}
+
+.sticker {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 100px;
+  padding: 6px 14px 6px 8px; /* Snug matching screenshot */
+  font-family:'Outfit', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sticker-icon-wrapper {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 30px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.02);
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
 }
 
-.adv-badge-circle:hover {
-  background: rgba(208, 246, 1, 0.03);
-  border-color: #d0f601; /* neon green border on hover */
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 0 40px rgba(208, 246, 1, 0.1);
+/* WP: White capsule, dark text */
+.sticker-wp {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  left: 0px;
+  top: 35px; /* Lower down on left */
+  z-index: 1;
+  transform: rotate(-8deg); /* Tilted left */
+}
+.wp-black {
+  background-color: #000000;
+  color: #ffffff;
 }
 
-/* Laurel Wrapper */
-.badge-laurel-wrapper {
+/* Galaxy: White capsule, dark text */
+.sticker-galaxy {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  left: 105px;
+  top: 5px; /* Elevated in the center peak! */
+  z-index: 2;
+  transform: rotate(4deg); /* Slightly tilted */
+}
+.galaxy-black {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Flair: Purple capsule, white text */
+.sticker-flair {
+  background-color: #8338ec; /* Rich Violet background */
+  color: #ffffff;
+  border: none;
+  left: 195px;
+  top: 35px; /* Lower down on right */
+  z-index: 3;
+  transform: rotate(10deg); /* Tilted right */
+}
+.flair-white {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Hover Magnetic Attraction: gentle, subtle gather inward */
+.metric-column:hover .sticker-wp {
+  transform: translate(18px, -15px) rotate(-1deg);
+}
+
+.metric-column:hover .sticker-galaxy {
+  transform: translate(8px, 12px) scale(1.02) rotate(1deg);
+}
+
+.metric-column:hover .sticker-flair {
+  transform: translate(-20px, -15px) rotate(3deg);
+}
+
+/* --- Card 2 Elements (Bubbles) --- */
+.revenue-bubbles {
   position: relative;
-  width: 120px;
-  height: 80px;
+  margin-bottom: 28px; /* Gap before large values */
+  height: 95px;
+  width: 300px; /* Expanded for elegant wave spacing */
+}
+
+.rev-bubble {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px; /* Rounded pill style matching screenshot */
+  padding: 6px 14px 6px 8px; /* Snug padding */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bubble-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.bubble-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bubble-label {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.bubble-client {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 1px;
+}
+
+/* Tilted Rainbow Arch Curve Positions */
+.bubble-gt {
+  left: 0px;
+  top: 35px; /* Lower down on left */
+  z-index: 1;
+  transform: rotate(-6deg); /* Tilted left */
+}
+.gt-icon {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.bubble-mojo {
+  left: 105px;
+  top: 5px; /* Elevated in center peak! */
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(189, 250, 90, 0.2); /* Reverted to original green */
+  transform: rotate(3deg); /* Slightly tilted */
+}
+.mojo-icon {
+  background-color: #10b981; /* Reverted to original green brand color */
+  color: #ffffff;
+}
+
+.bubble-myso {
+  left: 195px;
+  top: 35px; /* Lower down on right */
+  z-index: 3;
+  transform: rotate(8deg); /* Tilted right */
+}
+.myso-icon {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Hover Magnetic Attraction: gentle, subtle gather inward */
+.metric-column:hover .bubble-gt {
+  transform: translate(20px, -15px) scale(0.98) rotate(-1deg);
+}
+.metric-column:hover .bubble-mojo {
+  transform: translate(10px, 12px) scale(1.04) rotate(1deg);
+}
+.metric-column:hover .bubble-myso {
+  transform: translate(-18px, -15px) scale(0.98) rotate(2deg);
+}
+
+/* --- Card 3 Elements (Churn) --- */
+.churn-visual-element {
+  display: flex;
+  align-items: center; /* Centered top capsules */
+  justify-content: flex-start;
+  gap: 40px; /* Wider gap by default */
+  margin-bottom: 28px; /* Gap before large values */
+  width: 100%;
+  height: 90px;
+  transition: gap 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover Magnetic Attraction: Gap contracts gently drawing chart and pill closer */
+.metric-column:hover .churn-visual-element {
+  gap: 24px;
+}
+
+.bar-chart-mini {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 10px 14px;
+  height: 52px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.chart-bar {
+  width: 6px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
+}
+
+.bar-1 { height: 14px; }
+.bar-2 { height: 26px; }
+.bar-3 { height: 20px; }
+.bar-4 { height: 32px; }
+
+.active-lime {
+  background-color: #bdfa5a; /* Reverted to original green */
+  box-shadow: 0 0 10px rgba(189, 250, 90, 0.4); /* Reverted to original green */
+}
+
+.metric-column:hover .bar-1 { height: 18px; }
+.metric-column:hover .bar-2 { height: 30px; }
+.metric-column:hover .bar-3 { height: 26px; }
+.metric-column:hover .bar-4 { height: 38px; }
+
+/* White Saved Pill: overlapping face roundels next to stacked labels */
+.saved-pill {
+  display: inline-flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 100px;
+  padding: 6px 14px 6px 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.saved-avatars {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-  color: #fff;
+  margin-right: 10px;
 }
 
-.laurel-svg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.6;
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  object-fit: cover;
+  margin-left: -8px; /* Beautiful overlapping roundels */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-.badge-inner-icon {
-  z-index: 2;
-  color: #fff;
+.avatar:first-child {
+  margin-left: 0;
 }
 
-.adv-badge-circle:hover .badge-inner-icon {
-  color: #d0f601;
-  transform: scale(1.1);
-  transition: all 0.3s ease;
+.saved-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* Badge Text */
-.badge-content {
-  margin-top: 10px;
+.saved-label-big {
+  font-size: 14px;
+  font-weight: 800;
+  color: #000000;
+  line-height: 1.1;
 }
 
-.badge-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
+.saved-label-sub {
+  font-size: 8px;
+  font-weight: 800;
+  color: #666666;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  margin-top: 1px;
+}
+
+.metric-column:hover .saved-pill {
+  transform: translateX(-10px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+}
+
+
+/* Results Bottom Features Row */
+.results-features-row {
+  display: flex;
+  justify-content: space-between; /* Evenly spaced across the width of the grid columns */
+  gap: 30px;
+  padding-left: 0px; /* Perfectly centered alignment with no shifts */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 40px;
+}
+
+.res-feat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.res-feat-bullet {
+  color: #bdfa5a; /* Reverted to original green */
+  font-size: 18px;
+}
+
+.res-feat-text {
+  font-size: 18px;
   font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: #e5e7eb;
 }
 
-.badge-text {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.3;
-  max-width: 220px;
-  letter-spacing: -0.2px;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 1100px) {
-  .advantages-badges-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+/* Responsive configurations */
+@media (max-width: 1200px) {
+  .results-title {
+    font-size: 40px;
+  }
+  .serif-italic-title {
+    font-size: 46px;
+  }
+  .metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  .metric-value {
+    font-size: 80px;
   }
 }
 
-@media (max-width: 600px) {
-  .advantages-badges-grid {
+@media (max-width: 992px) {
+  .results-header {
+    padding-left: 0px;
+  }
+  .metrics-grid {
     grid-template-columns: 1fr;
+    gap: 50px;
+    padding-left: 0px;
   }
-  .adv-badge-circle {
-    width: 240px;
-    height: 240px;
+  .results-features-row {
+    padding-left: 0px;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .vertical-badge-wrapper {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .arounda-results-section {
+    padding: 80px 0;
+  }
+  .results-title {
+    font-size: 30px;
+  }
+  .serif-italic-title {
+    font-size: 34px;
+  }
+  .metric-value {
+    font-size: 70px;
+    margin-bottom: 16px;
   }
 }

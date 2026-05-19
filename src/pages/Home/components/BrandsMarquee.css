@@ -1,154 +1,330 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+/* Brands Marquee Stylesheet - Orange & White & Indigo/Blue Aura */
 
-/* BrandsMarquee.css */
-.tech-section {
-  background-color: #05050A; /* Matches Hero deep dark background */
-  padding: 100px 0 120px;
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  position: relative;
+.arounda-marquee-section {
+  width: 100%;
+  /* Elegant, deep blacky-blue midnight mesh gradient backdrop */
+  background: radial-gradient(circle at 15% 60%, rgba(13, 20, 68, 0.3) 0%, rgba(3, 3, 3, 0) 70%), 
+              #030303;
+  padding: 60px 0 120px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
-}
-
-.tech-header {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 80px;
-  padding: 0 20px;
-}
-
-.tech-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  color: #fff;
-  margin-bottom: 24px;
-  font-weight: 700;
-  letter-spacing: -3px;
-  line-height: 1;
-}
-
-.tech-title-serif {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  font-weight: 400;
-  color: #94a3b8;
-  margin-left: 10px;
-}
-
-.tech-subtitle {
-  font-family: 'Inter', sans-serif;
-  color: #94a3b8;
-  font-size: 1.15rem;
-  line-height: 1.7;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.marquee-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 24px; /* Space between rows */
   position: relative;
-  /* Mask to fade out left and right edges */
-  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
-.marquee-wrapper {
+.marquee-container {
   display: flex;
   width: 100%;
   overflow: hidden;
+  margin-bottom: 120px; /* Space between marquee and info block */
+  position: relative; /* Position relative for the overlay masks */
+}
+
+/* Semi-transparent masks directly on the marquee container for deep, smooth fadeout on left/right */
+.marquee-container::before,
+.marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 30%; /* Each mask covers 40% of the screen width (80% total coverage) */
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, #030303 25%, transparent 100%); /* Outer 25% is solid black, fading smoothly to center */
+}
+
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, #030303 25%, transparent 100%); /* Outer 25% is solid black, fading smoothly to center */
 }
 
 .marquee-track {
   display: flex;
-  width: max-content;
-  animation: scroll-left 50s linear infinite;
-}
-
-.marquee-reverse {
-  animation: scroll-right 50s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-.marquee-set {
-  display: flex;
-  gap: 24px;
-  padding-right: 24px; /* Ensure gap between sets is consistent */
-}
-
-.tech-pill {
-  display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 100px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  cursor: default;
+  gap: 80px;
+  animation: marqueeScroll 160s linear infinite; /* Slowed down to 160s for an extremely slow, majestic scroll */
   white-space: nowrap;
 }
 
-.tech-pill:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.02);
+/* Scrolling animation */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.tech-emoji {
-  font-size: 1.25rem;
-  line-height: 1;
+.marquee-logo-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  user-select: none;
 }
 
-.tech-name {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #94a3b8;
-  transition: color 0.3s ease;
+/* Technology marquee item styled exactly like the original partner logos */
+.tech-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.25);
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
 }
 
-.tech-pill:hover .tech-name {
+/* Hover highlights a brand/technology logo text */
+.marquee-logo-item:hover .tech-marquee-item {
+  color: #ffffff;
+  transform: scale(1.06);
+}
+
+/* Grayscale and faded icon when not hovered for a super clean unified layout */
+.tech-marquee-icon {
+  font-size: 20px;
+  opacity: 0.3;
+  filter: grayscale(100%);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+}
+
+.marquee-logo-item:hover .tech-marquee-icon {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* ==========================================================================
+   2. PoleWeb Information Block Styles (Exactly matching the uploaded design screen)
+   ========================================================================== */
+
+.tech-info-section {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+/* Radial Glow Behind Text and Lists */
+.tech-info-radial-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(13, 20, 68, 0.25) 0%, rgba(3, 3, 3, 0) 70%); /* Deep blacky-blue glow */
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Grid Layout matching the exact column split in your screen (35% left, 65% right) */
+.tech-info-inner {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  width: 100%;
+  position: relative;
+}
+
+/* Left Column: holds the vertically rotated RESULTS badge */
+.tech-info-badge-col {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 15px; /* Vertically aligns the badge beautifully with the heading area */
+}
+
+.tech-info-badge-wrapper {
+  position: absolute;
+  left: 0;
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: left top;
+  pointer-events: none;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.tech-info-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  opacity: 0.85;
+  padding: 4px 12px;
+  border-left: 3px solid #bdfa5a; /* Reverted to original green */
+}
+
+/* Right Column: Title & Info Items (Left-aligned perfectly with each other) */
+.tech-info-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.tech-info-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 45px; /* Exact gap between heading and list */
+}
+
+.serif-italic-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 54px;
   color: #ffffff;
 }
 
-/* 
-  Since we have exactly 4 sets rendered (.marquee-set), 
-  translating by 50% shifts exactly 2 full sets. 
-  This creates a mathematically perfect infinite loop.
-*/
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Features List Layout */
+.tech-info-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-@keyframes scroll-right {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+.tech-info-item {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* Spacious gap between bullet and text */
+  padding: 24px 0; /* Compact paddings matching the screen exactly */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+}
+
+.tech-info-item:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tech-info-bullet {
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  width: 40px;
+  display: inline-flex;
+  justify-content: flex-start;
+  user-select: none;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+}
+
+.tech-info-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 19px; /* Reverted to clean, elegant medium text size */
+  font-weight: 500; /* Medium thickness */
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: -0.015em;
+  line-height: 1.45;
+  transition: color 0.3s ease;
+}
+
+/* Bullet icon hover transitions to turn Green */
+.tech-info-item:hover .tech-info-bullet {
+  color: #bdfa5a; /* Reverted to original green */
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.tech-info-item:hover .tech-info-text {
+  color: #ffffff;
+}
+
+.desktop-break {
+  display: block;
+}
+
+/* Responsive configurations */
+@media (max-width: 1200px) {
+  .tech-info-inner {
+    grid-template-columns: 30% 70%;
+  }
+  .tech-info-title {
+    font-size: 40px;
+  }
+  .serif-italic-title {
+    font-size: 46px;
+  }
+  .tech-info-item {
+    gap: 36px;
+    padding: 22px 0;
+  }
+  .tech-info-text {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 992px) {
+  .arounda-marquee-section {
+    padding: 50px 0 90px 0;
+  }
+  .marquee-container {
+    margin-bottom: 70px;
+  }
+  .tech-info-inner {
+    grid-template-columns: 100%; /* Switch to single-column stacking */
+  }
+  .tech-info-badge-col {
+    display: none; /* Hide vertical badge on tablet & mobile */
+  }
 }
 
 @media (max-width: 768px) {
-  .tech-pill {
-    padding: 10px 20px;
-    gap: 8px;
+  .arounda-marquee-section {
+    padding: 40px 0 80px 0;
   }
-  .tech-name {
-    font-size: 0.9rem;
-  }
-  .tech-emoji {
-    font-size: 1.1rem;
+  .marquee-container {
+    margin-bottom: 50px;
   }
   .marquee-track {
-    animation-duration: 35s;
+    gap: 50px;
+    animation: marqueeScroll 30s linear infinite;
   }
-  .marquee-reverse {
-    animation-duration: 35s;
+  .tech-marquee-item {
+    font-size: 18px;
+    gap: 8px;
+  }
+  .tech-marquee-icon {
+    font-size: 16px;
+  }
+  .arounda-marquee-section::before,
+  .arounda-marquee-section::after {
+    width: 60px;
+  }
+  .tech-info-title {
+    font-size: 32px;
+    margin-bottom: 35px;
+  }
+  .serif-italic-title {
+    font-size: 36px;
+  }
+  .desktop-break {
+    display: none;
+  }
+  .tech-info-item {
+    gap: 20px;
+    padding: 18px 0;
+  }
+  .tech-info-bullet {
+    font-size: 15px;
+    width: 28px;
+  }
+  .tech-info-text {
+    font-size: 16px;
   }
 }
